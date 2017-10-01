@@ -1,0 +1,29 @@
+package cn.mysic.snmp.mib;
+
+import cn.mysic.snmp.util.SNMPOID;
+
+import java.util.List;
+
+/**
+ * Created by liuchuan on 8/14/16.
+ */
+@SNMPOID(".1.3.6.1.2.1.3")
+public class AtInfo {
+    @SNMPOID("1")
+    public List<AtEntry> atEntry;
+
+    public List<AtEntry> getAtEntry() {
+        return atEntry;
+    }
+
+    public void setAtEntry(List<AtEntry> atEntry) {
+        this.atEntry = atEntry;
+    }
+
+    @Override
+    public String toString() {
+        return "AtInfo{" +
+                "atEntry=" + atEntry +
+                '}';
+    }
+}

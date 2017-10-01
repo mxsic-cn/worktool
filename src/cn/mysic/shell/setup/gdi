@@ -1,0 +1,14 @@
+#!/bin/bash
+
+TARGET=$1
+SN=$2
+
+cd /usr/share/cornerstone_setup
+export PYTHONPATH=`pwd`
+cd main
+
+if [ "$TARGET" = 'mw' ]; then
+    python gdi.pyc --target $TARGET
+else
+    python gdi.pyc --target $TARGET --sn $SN
+fi;

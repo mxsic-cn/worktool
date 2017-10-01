@@ -1,0 +1,93 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'thrift'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+version=project.version
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+buildscript {
+    repositories {
+        if (target=='development') {
+            mavenLocal()
+        }
+        maven {
+            url "${repository_url}/repository/snapshots"
+            credentials {
+                username "${ossrhUsername}"
+                password "${ossrhPassword}"
+            }
+        }
+        maven {
+            url "${repository_url}/repository/internal"
+        }
+    }
+
+    dependencies {
+        classpath 'co.tomlee.gradle.plugins:gradle-thrift-plugin:0.0.4'
+    }
+}
+
+repositories {
+    maven {
+          url "${repository_url}/repository/snapshots"
+          credentials {
+                username "${ossrhUsername}"
+                password "${ossrhPassword}"
+          }
+    }
+    maven {
+        url "${repository_url}/repository/internal"
+    }
+}
+
+
+dependencies {
+    //
+    // adjust for your Thrift version ...
+    //
+    compile 'org.apache.thrift:libthrift:0.9.1'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = project.name
+            pom.packaging = 'jar'
+            if (target == 'patch') { 
+                repository(url: uri(System.getenv('HOME') + "/.m2_$branch"))
+            } else {
+                repository(url: "${repository_url}/repository/snapshots"){
+                    authentication(userName:ossrhUsername, password:ossrhPassword)
+                }
+            }
+        }
+    }
+}
+
+generateThriftSource {
+    generators {
+        java {
+            option 'hashcode'
+            option 'beans'
+        }
+    }
+}
+
+//
+// optional: add generated sources as a source directory in IDEA
+//
+idea.module.excludeDirs = []
+idea.module.sourceDirs += file('build/generated-src/thrift/main')
+idea.module.jdkName = '1.8'
