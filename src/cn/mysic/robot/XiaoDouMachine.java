@@ -1,4 +1,4 @@
-package cn.mxsic.robot.simsimi;
+package cn.mxsic.robot;
 
 /**
  * Created by liuchuan on 6/13/17.

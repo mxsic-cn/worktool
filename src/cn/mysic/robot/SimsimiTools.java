@@ -1,4 +1,4 @@
-package cn.mxsic.robot.simsimi;
+package cn.mxsic.robot;
 
 import java.io.*;
 import java.net.HttpURLConnection;
