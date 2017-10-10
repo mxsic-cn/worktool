@@ -1,13 +1,10 @@
-package demo;
+package cn.mysic.pinyin4j;
 
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
-import java.util.concurrent.atomic.DoubleAccumulator;
-import java.util.zip.Inflater;
 
 /**
  * Created by liuchuan on 6/12/17.
@@ -59,9 +56,8 @@ public class PinYinCounter {
         }
 
     public static Map<String,Double> sortCharCounter(Map<String,Double> map){
-        ValueComparator bvc =  new ValueComparator(map);
-        TreeMap<String,Double> sorted_map = new TreeMap<String,Double>(bvc);
-
+//        ValueComparator bvc =  new ValueComparator(map);
+        TreeMap<String,Double> sorted_map = null  ;//= new TreeMap<String,Double>(bvc);
         sorted_map.putAll(map);
         return sorted_map;
     }

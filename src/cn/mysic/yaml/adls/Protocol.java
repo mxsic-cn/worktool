@@ -4,7 +4,7 @@ package cn.mysic.yaml.adls;
  * Created by liuchuan on 9/27/16.
  */
 public class Protocol {
-    private adl.Protocol_Parser protocol_parser;
+    private Protocol_Parser protocol_parser;
     private Protocol_Identification protocol_identification;
     private String transport_protocol;
     private String protocol_name;

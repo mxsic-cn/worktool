@@ -1,5 +1,6 @@
-package demo;
+package cn.mysic.pinyin4j;
 
+import cn.mysic.netant.LogUtil;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;

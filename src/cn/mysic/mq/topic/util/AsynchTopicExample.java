@@ -1,11 +1,13 @@
-package com.topic.util;
+package cn.mysic.mq.topic.util;
+
+import cn.mysic.mq.topic.publisher.Publisher;
+import cn.mysic.mq.topic.subscriber.Subscriber;
+import org.activemq.ActiveMQConnectionFactory;
+
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
 
-import com.topic.publisher.Publisher;
-import com.topic.subscriber.Subscriber;
 
 /** 
  * @author Kim Haase 
@@ -24,8 +26,8 @@ public class AsynchTopicExample {
         		mq.getPassword(), mq.getUrl());  
     }  
     public void run_threads() {  
-        Subscriber   subscriber = new Subscriber();  
-        Publisher  publisher = new Publisher();  
+        Subscriber   subscriber = new Subscriber();
+        Publisher publisher = new Publisher();
         Subscriber subscriber1 = new Subscriber();
         subscriber1.start();
         publisher.start();  

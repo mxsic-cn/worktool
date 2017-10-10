@@ -1,4 +1,4 @@
-package com.topic.util;
+package cn.mysic.mq.topic.util;
 
 public class SampleUtilities {
 

@@ -1,5 +1,7 @@
-package demo;
+package cn.mysic.pinyin4j;
 
+
+import cn.mysic.netant.LogUtil;
 
 import java.io.*;
 import java.util.HashMap;

@@ -1,14 +1,11 @@
-package com.topic.publisher;
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-import javax.jms.Topic;
+package cn.mysic.mq.topic.publisher;
 
-import com.topic.util.AsynchTopicExample;
-import com.topic.util.MQ;
+import cn.mysic.mq.topic.util.AsynchTopicExample;
+import cn.mysic.mq.topic.util.MQ;
+
+import javax.jms.*;
+
+
 
  /** 
      * The Pulisher class publishes several message to a topic.  
@@ -33,7 +30,7 @@ public class Publisher extends Thread {
             final String       MSG_TEXT = new String("Here is a message");  
             MQ				   mq = new MQ();
             try {  
-                topicConnectionFactory = AsynchTopicExample.getJmsConnectionFactory();  
+                topicConnectionFactory = AsynchTopicExample.getJmsConnectionFactory();
                 topicConnection = topicConnectionFactory.createConnection();  
                 topicSession = topicConnection.createSession(false,Session.AUTO_ACKNOWLEDGE);  
                 topic = topicSession.createTopic(mq.getTopicName());  
@@ -53,7 +50,7 @@ public class Publisher extends Thread {
                 for (int i = 0; i < NUMMSGS; i++) {  
                 	Thread.sleep(3000);
                     message.setText(MSG_TEXT + " " + (i + 1));  
-                    System.out.println("·¢²¼Õß: ·¢²¼ÏûÏ¢: " + message.getText());  
+                    System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢: " + message.getText());  
                     topicPublisher.send(message);  
                 }  
   

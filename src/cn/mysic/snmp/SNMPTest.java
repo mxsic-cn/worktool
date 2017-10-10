@@ -3,8 +3,6 @@ package cn.mysic.snmp;
 import cn.mysic.snmp.mib.*;
 import cn.mysic.snmp.util.SNMPConfig;
 import cn.mysic.snmp.util.SNMPUtils;
-import com.istuary.common.idl.AuthType;
-import com.istuary.common.idl.PrivType;
 import org.snmp4j.mp.SnmpConstants;
 import org.snmp4j.security.SecurityLevel;
 

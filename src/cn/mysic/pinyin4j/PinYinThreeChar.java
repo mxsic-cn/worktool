@@ -1,4 +1,4 @@
-package demo;
+package cn.mysic.pinyin4j;
 
 
 import java.io.*;

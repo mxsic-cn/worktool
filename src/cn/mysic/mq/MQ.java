@@ -1,6 +1,7 @@
 package cn.mysic.mq;
 
-import org.apache.activemq.ActiveMQConnection;
+
+import org.activemq.ActiveMQConnection;
 
 public class MQ {
 	private String username = ActiveMQConnection.DEFAULT_USER;

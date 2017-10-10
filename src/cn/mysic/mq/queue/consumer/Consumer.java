@@ -1,16 +1,10 @@
 package cn.mysic.mq.queue.consumer;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.MessageConsumer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+import cn.mysic.mq.MQ;
+import org.activemq.ActiveMQConnectionFactory;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
+import javax.jms.*;
 
-import com.queue.mq.MQ;
 
 public class Consumer {
 		public static void main(String[] args) throws JMSException {

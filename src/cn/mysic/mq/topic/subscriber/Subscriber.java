@@ -1,40 +1,32 @@
-package com.topic.subscriber;
+package cn.mysic.mq.topic.subscriber;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-import javax.jms.Topic;
+import cn.mysic.mq.MQ;
+import cn.mysic.mq.topic.util.AsynchTopicExample;
+import cn.mysic.mq.topic.util.SampleUtilities;
 
-import com.topic.util.AsynchTopicExample;
-import com.topic.util.MQ;
-import com.topic.util.SampleUtilities;
+import javax.jms.*;
 
 public class Subscriber  extends Thread {  
 		  
          private class TextListener implements MessageListener {  
-             final SampleUtilities.DoneLatch  monitor = new SampleUtilities.DoneLatch();  
-  
-             //ÈôÊÕµ½ÏûÏ¢onMessage±»µ÷ÓÃ(ÊµÏÖÁËMessageListener´úÀí)  
+             final SampleUtilities.DoneLatch  monitor = new SampleUtilities.DoneLatch();
+
+             //ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Ï¢onMessageï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Êµï¿½ï¿½ï¿½ï¿½MessageListenerï¿½ï¿½ï¿½ï¿½)
              public void onMessage(Message message) {  
                  if (message instanceof TextMessage) {  
                      TextMessage  msg = (TextMessage) message;  
   
                      try {  
-                         System.out.println("¶©ÔÄÕßÏß³Ì:¶ÁÈ¡ÏûÏ¢: " + msg.getText());  
+                         System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½:ï¿½ï¿½È¡ï¿½ï¿½Ï¢: " + msg.getText());  
                      } catch (JMSException e) {  
                          System.out.println("Exception in onMessage(): " + e.toString());  
                      }  
                  } else {  
-                    //ÊÕµ½·ÇTextMessageÀàÐÍµÄÏûÏ¢£¬PublisherÖ¸Ê¾Äã¿ÉÒÔ½áÊø¶©ÔÄ  
+                    //ï¿½Õµï¿½ï¿½ï¿½TextMessageï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½Ï¢ï¿½ï¿½PublisherÖ¸Ê¾ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
                      monitor.allDone();  
                  }  
              }  
-         }//½áÊøTextListener ClassµÄ¶¨Òå  
+         }//ï¿½ï¿½ï¿½ï¿½TextListener Classï¿½Ä¶ï¿½ï¿½ï¿½  
   
         /** 
          * Runs the thread. 
@@ -48,7 +40,7 @@ public class Subscriber  extends Thread {
             TextListener            topicListener = null;  
             MQ						mq = new MQ();
             try {  
-                topicConnectionFactory = AsynchTopicExample.getJmsConnectionFactory();  
+                topicConnectionFactory = AsynchTopicExample.getJmsConnectionFactory();
                 topicConnection = topicConnectionFactory.createConnection();  
                 topicSession = topicConnection.createSession(false, Session.AUTO_ACKNOWLEDGE);  
                 topic = topicSession.createTopic(mq.getTopicName());  

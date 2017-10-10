@@ -1,18 +1,11 @@
 package cn.mysic.discovery.service;
 
-import java.util.List;
-
-<<<<<<< HEAD:src/cn/mysic/discovery/service/DiscoveryTask.java
 import cn.mysic.discovery.model.DeviceInfo;
 import cn.mysic.discovery.model.DiscoveryConfig;
-import cn.mysic.snmp.util.SNMPConfig;
 import cn.mysic.log.LogUtil;
-=======
-import cn.mxsic.discovery.model.DeviceInfo;
-import cn.mxsic.discovery.model.DiscoveryConfig;
-import cn.mxsic.snmp.util.SNMPConfig;
-import cn.mxsic.util.LogUtil;
->>>>>>> origin/dev:discovery/src/cn/mxsic/discovery/service/DiscoveryTask.java
+import cn.mysic.snmp.util.SNMPConfig;
+
+import java.util.List;
 
 public class DiscoveryTask implements Runnable {
 	private String ip;

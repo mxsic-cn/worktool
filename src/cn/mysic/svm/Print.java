@@ -1,4 +1,4 @@
-package cn.mxsic.svm;
+package cn.mysic.svm;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

@@ -1,8 +1,6 @@
 package cn.mysic.snmp.util;
 
 import cn.mysic.snmp.mib.*;
-import com.istuary.common.idl.AuthType;
-import com.istuary.common.idl.PrivType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.snmp4j.*;
@@ -17,7 +15,6 @@ import org.snmp4j.util.TableEvent;
 import org.snmp4j.util.TableUtils;
 
 import java.io.IOException;
-import java.lang.annotation.Target;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -434,9 +431,9 @@ public class SNMPUtils {
 		OID auth_security_oid;
 		//认证 OID
 		auth_security_oid = AuthMD5.ID;
-		if(AuthType.AuthMD5.getValue() == authAlgorithm){
+		if(AuthMD5.ID.toInt() == authAlgorithm){
 			auth_security_oid = AuthMD5.ID;
-		}else if(AuthType.AuthSHA.getValue() == authAlgorithm){
+		}else if(AuthSHA.ID.toInt() == authAlgorithm){
 			auth_security_oid = AuthSHA.ID;
 		}
 		return auth_security_oid;
@@ -446,15 +443,15 @@ public class SNMPUtils {
 		OID priv_security_oid;
 		//隐私 OID
 		priv_security_oid = PrivDES.ID;
-		if(PrivType.Priv3DES.getValue() == privcyAlgorithm){
+		if(Priv3DES.ID.toInt() == privcyAlgorithm){
 			priv_security_oid = Priv3DES.ID;
-		}else if(PrivType.PrivAES.getValue() == privcyAlgorithm){
+		}else if(PrivAES128.ID.toInt() == privcyAlgorithm){
 			priv_security_oid = PrivAES128.ID;
-		}else if(PrivType.PrivDES.getValue() == privcyAlgorithm){
+		}else if(PrivDES.ID.toInt() == privcyAlgorithm){
 			priv_security_oid = PrivDES.ID;
-		}else if(PrivType.PrivAES192.getValue() == privcyAlgorithm){
+		}else if(PrivAES192.ID.toInt() == privcyAlgorithm){
 			priv_security_oid = PrivAES192.ID;
-		}else if(PrivType.PrivAES256.getValue() == privcyAlgorithm){
+		}else if(PrivAES256.ID.toInt() == privcyAlgorithm){
 			priv_security_oid = PrivAES256.ID;
 		}
 		return priv_security_oid;

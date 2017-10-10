@@ -1,5 +1,7 @@
 package cn.mysic.snmp;
 
+import cn.mysic.net.PingUtil;
+
 import java.util.Calendar;
 
 /**

@@ -1,25 +1,15 @@
 package cn.mysic.discovery.service;
 
-import java.util.*;
-import java.util.Map.Entry;
-
-<<<<<<< HEAD:src/cn/mysic/discovery/service/DeviceInfoManager.java
 import cn.mysic.discovery.model.DeviceInfo;
 import cn.mysic.discovery.model.PortInfo;
 import cn.mysic.discovery.util.ComUtil;
 import cn.mysic.discovery.util.Constants;
 import cn.mysic.discovery.util.REUtil;
-import cn.mysic.snmp.mib.IpNetToMediaEntry;
 import cn.mysic.log.LogUtil;
-=======
-import cn.mxsic.discovery.model.DeviceInfo;
-import cn.mxsic.discovery.model.PortInfo;
-import cn.mxsic.discovery.util.ComUtil;
-import cn.mxsic.discovery.util.Constants;
-import cn.mxsic.discovery.util.REUtil;
-import cn.mxsic.snmp.mib.IpNetToMediaEntry;
-import cn.mxsic.util.LogUtil;
->>>>>>> origin/dev:discovery/src/cn/mxsic/discovery/service/DeviceInfoManager.java
+import cn.mysic.snmp.mib.IpNetToMediaEntry;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 public class DeviceInfoManager {
 

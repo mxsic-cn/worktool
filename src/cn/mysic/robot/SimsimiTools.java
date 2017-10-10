@@ -1,4 +1,4 @@
-package cn.mxsic.robot;
+package cn.mysic.robot;
 
 import java.io.*;
 import java.net.HttpURLConnection;

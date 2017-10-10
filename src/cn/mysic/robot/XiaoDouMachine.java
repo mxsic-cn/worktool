@@ -1,10 +1,8 @@
-package cn.mxsic.robot;
+package cn.mysic.robot;
 
 /**
  * Created by liuchuan on 6/13/17.
  */
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -14,6 +12,9 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * 小豆机器人

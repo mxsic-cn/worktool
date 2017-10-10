@@ -8,7 +8,7 @@ public class Identification_Port {
     private double port;
 
     public Identification_Port() {
-        this.enabled = adl.UDPConstant.Enabled.YES+Math.random();
+        this.enabled = UDPConstant.Enabled.YES+Math.random();
         this.port = Math.floor(Math.random()*1000);
     }
 
