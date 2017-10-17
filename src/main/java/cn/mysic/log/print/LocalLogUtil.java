@@ -1,4 +1,4 @@
-package cn.mysic.netant;
+package cn.mysic.log.print;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,18 +8,18 @@ import java.io.RandomAccessFile;
 /**
  * Created by liuchuan on 12/1/16.
  */
-public class LogUtil {
-    private static String filePath = "/home/liuchuan/Documents/data";
-    private static String fileName = "alexa.rawdata";
+public class LocalLogUtil {
+    private static String filePath = "/home/liuchuan/Documents/print";
+    private static String fileName = "data.log";
 
-    public static  void writeLog(String log ){
-        writeLog(log,LogUtil.fileName);
+    public static void writeSqllog(String log ){
+        writeSqllog(log, LocalLogUtil.fileName);
     }
     /**
      * the sql log should be write one day a file .
      */
-    public static void writeLog(String log,String fileName){
-//        LogUtil.fileName = fileName;
+    public static void writeSqllog(String log,String fileName){
+        LocalLogUtil.fileName = fileName;
         File  file = new File(filePath);
         if(!file.exists()){
             file.mkdirs();

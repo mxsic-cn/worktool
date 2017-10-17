@@ -2,7 +2,7 @@ package cn.mysic.discovery.service;
 
 import cn.mysic.discovery.model.DeviceInfo;
 import cn.mysic.discovery.model.DiscoveryConfig;
-import cn.mysic.log.LogUtil;
+import cn.mysic.log.print.LocalLogUtil;
 import cn.mysic.snmp.util.SNMPConfig;
 
 import java.util.List;
@@ -34,7 +34,7 @@ public class DiscoveryTask implements Runnable {
 									return;
 								}
 							}
-							LogUtil.writeSqllog(deviceInfo.getDeviceIP() + "--->"+ deviceInfo.getDeviceMAC() + "--->" + deviceInfo.getDeviceName()+"  IPS:"+deviceInfo.getDeviceIps()+ "  MACS:"+deviceInfo.getDeviceMacs(),"Device.txt");
+							LocalLogUtil.writeSqllog(deviceInfo.getDeviceIP() + "--->"+ deviceInfo.getDeviceMAC() + "--->" + deviceInfo.getDeviceName()+"  IPS:"+deviceInfo.getDeviceIps()+ "  MACS:"+deviceInfo.getDeviceMacs(),"Device.txt");
 							this.rsList.add(deviceInfo);
 						}
 					}

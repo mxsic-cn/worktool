@@ -6,8 +6,9 @@ import cn.mysic.discovery.model.LinkInfo;
 import cn.mysic.discovery.service.DiscoveryRelationService;
 import cn.mysic.discovery.service.DiscoveryTask;
 import cn.mysic.discovery.util.ComUtil;
+import cn.mysic.log.print.LocalLogUtil;
 import cn.mysic.snmp.util.SNMPConfig;
-import cn.mysic.log.LogUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -93,7 +94,7 @@ public class Discovery {
 //        ips.addAll(ComUtil.getAllIPS("172.21.25.1","172.21.25.254"));
 //        ips.addAll(ComUtil.getAllIPS("172.21.123.1","172.21.123.254"));
 //        ips.addAll(ComUtil.getAllIPS("172.21.129.1","172.21.129.254"));
-        LogUtil.writeSqllog("total: " + ips.size(),"Device.txt");
+        LocalLogUtil.writeSqllog("total: " + ips.size(),"Device.txt");
         List<SNMPConfig> snmpConfigList = new ArrayList<SNMPConfig>();
         //V2C
         SNMPConfig target  = new SNMPConfig();

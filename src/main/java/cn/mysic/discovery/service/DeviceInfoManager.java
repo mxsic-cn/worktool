@@ -5,7 +5,7 @@ import cn.mysic.discovery.model.PortInfo;
 import cn.mysic.discovery.util.ComUtil;
 import cn.mysic.discovery.util.Constants;
 import cn.mysic.discovery.util.REUtil;
-import cn.mysic.log.LogUtil;
+import cn.mysic.log.print.LocalLogUtil;
 import cn.mysic.snmp.mib.IpNetToMediaEntry;
 
 import java.util.*;
@@ -46,7 +46,7 @@ public class DeviceInfoManager {
 				String mac = ipAdEntAddr.getIpNetToMediaPhysAddress();
 				String ip = ipAdEntAddr.getIpNetToMediaNetAddress();
 				if (REUtil.isMac(mac)&& ComUtil.ipOnList(ip,allDeviceList)) {
-					LogUtil.writeSqllog(mac.toUpperCase()+">>"+ ip,"mac_ip.txt");
+					LocalLogUtil.writeSqllog(mac.toUpperCase()+">>"+ ip,"mac_ip.txt");
 					allMacIpTable.put(mac.toUpperCase(), ip);
 				}
 			}
@@ -56,13 +56,13 @@ public class DeviceInfoManager {
 			while (macIterator.hasNext()) {
 				String mac = macIterator.next();
 				if (REUtil.isMac(mac)) {
-					LogUtil.writeSqllog(mac.toUpperCase()+">>"+ deviceInfo.getDeviceIP(),"mac_ip.txt");
+					LocalLogUtil.writeSqllog(mac.toUpperCase()+">>"+ deviceInfo.getDeviceIP(),"mac_ip.txt");
 					allMacIpTable.put(mac.toUpperCase(), deviceInfo.getDeviceIP());
 					this.macDeviceMap.put(mac.toUpperCase(), deviceInfo);
 				}
 			}
 			if (REUtil.isMac(deviceMAC)){
-				LogUtil.writeSqllog(deviceMAC.toUpperCase()+">>"+ deviceInfo.getDeviceIP(),"mac_ip.txt");
+				LocalLogUtil.writeSqllog(deviceMAC.toUpperCase()+">>"+ deviceInfo.getDeviceIP(),"mac_ip.txt");
 				allMacIpTable.put(deviceMAC.toUpperCase(), deviceInfo.getDeviceIP());
 				this.macDeviceMap.put(deviceMAC.toUpperCase(), deviceInfo);
 			}

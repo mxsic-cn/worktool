@@ -1,6 +1,6 @@
 package cn.mysic.domain;
 
-import cn.mysic.log.LogUtil;
+import cn.mysic.log.print.LocalLogUtil;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -34,7 +34,7 @@ public class FrequencyIndex {
             time = 1;
         }
         fre = Double.parseDouble(df.format(Math.abs((Math.log(count)/fre)*(timeSpace/time)))) ;
-        LogUtil.writeSqllog(df.format(time/60)+"min  "+fre+ "");
+        LocalLogUtil.writeSqllog(df.format(time/60)+"min  "+fre+ "");
         return fre;
     }
 }

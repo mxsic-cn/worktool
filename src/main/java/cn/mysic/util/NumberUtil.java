@@ -8,7 +8,7 @@ import java.util.Calendar;
  */
 public class NumberUtil {
     private static Calendar calendar = Calendar.getInstance();
-    private static DecimalFormat df = new DecimalFormat("#0.0000");
+    private static DecimalFormat df = new DecimalFormat("#0.00");
     public static String format(double d){
         return df.format(d);
     }

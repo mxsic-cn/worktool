@@ -1,6 +1,6 @@
 package cn.mysic.domain;
 
-import cn.mysic.log.LogUtil;
+import cn.mysic.log.print.LocalLogUtil;
 import cn.mysic.util.NumberUtil;
 import com.sun.xml.internal.bind.v2.util.EditDistance;
 
@@ -64,7 +64,7 @@ public class DomainEditDistance {
                         map.put(String.valueOf(distance), 1);
                     }
                 }
-                LogUtil.writeSqllog("----------" + todoD + "---------", fileName);
+                LocalLogUtil.writeSqllog("----------" + todoD + "---------", fileName);
                 if (anaylzeEditDistance(todoD.length(), map)) {
                     maliciousDomain.add(todoD);
                 }
@@ -133,10 +133,10 @@ public class DomainEditDistance {
             todoED.addAll(DomainDetection.goodDomain);
 //            maliciousED = sortLen(maliciousED);
             Set<String> list = maliciousDomaineditDistanceFilter(todoED,maliciousED);
-//            LogUtil.writeSqllog(list.size()+"  true");
+//            LocalLogUtil.writeSqllog(list.size()+"  true");
 //            for (String str : list) {
 //                if(todoED.contains(str)){
-//                LogUtil.writeSqllog(str, fileName);
+//                LocalLogUtil.writeSqllog(str, fileName);
 //                }else{
 //                    System.out.println(str+"  true");
 //                }
@@ -147,7 +147,7 @@ public class DomainEditDistance {
     private static void print() {
         Set<String> set = new HashSet<>(mapR.keySet());
         for (String key : set) {
-            LogUtil.writeSqllog(key+" "+NumberUtil.formats(mapR.get(key)), fileName);
+            LocalLogUtil.writeSqllog(key+" "+NumberUtil.formats(mapR.get(key)), fileName);
             System.out.println(key+" "+NumberUtil.formats(mapR.get(key)));
         }
     }
