@@ -1,4 +1,4 @@
-package cn.mysic.log.log4j;
+package cn.mysic.log.logback;
 
 
 import org.slf4j.Logger;

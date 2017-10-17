@@ -1,4 +1,4 @@
-package com;
+package cn.mysic.tools;
 
 import java.util.UUID;
 

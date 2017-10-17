@@ -1,4 +1,4 @@
-package com;
+package cn.mysic.tools;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -26,12 +26,12 @@ public class WebLogic {
 			con = (HttpURLConnection) new URL(url).openConnection();
 			int state = con.getResponseCode();
 			if (200 == state) {
-				result = "WEBLOGIC AGENTÁ¬½Ó³É¹¦";
+				result = "WEBLOGIC AGENTï¿½ï¿½ï¿½Ó³É¹ï¿½";
 			}else{
-				result = "WEBLOGIC AGENTÁ¬½ÓÊ§°Ü";
+				result = "WEBLOGIC AGENTï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½";
 			}
 		} catch (IOException e) {
-			result = "WEBLOGIC AGENTÁ¬½ÓÊ§°Ü";
+			result = "WEBLOGIC AGENTï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½";
 		} finally {
 			System.out.println(result);
 			if(con!=null){

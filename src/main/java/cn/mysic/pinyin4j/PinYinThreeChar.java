@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class PinYinThreeChar {
     public static final String DATA_PATH = "/home/liuchuan/Documents/pinyin";
     public static final String COUNT_DATA_PATH = "/home/liuchuan/Documents/txt/three";
-    private static Map<String,Integer> charMap = new HashMap<>();
+    private static Map<String,Integer> charMap = new HashMap<String,Integer>();
 
 
     public static void countCharStart() {
