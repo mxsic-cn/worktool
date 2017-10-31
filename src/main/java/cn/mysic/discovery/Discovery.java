@@ -80,33 +80,21 @@ public class Discovery {
     public static void main(String[] args) {
         Discovery test = new Discovery();
 
-        List<String> ips = ComUtil.getAllIPS("192.168.110.1","192.168.110.254");
-//        List<String> ips = ComUtil.getAllIPS("192.168.110.1","192.168.117.254");
-//        ips.addAll(ComUtil.getAllIPS("192.168.20.1","192.168.20.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.17.3.1","172.17.3.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.17.229.1","172.17.229.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.18.1.1","172.18.1.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.18.51.1","172.18.51.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.18.52.1","172.18.52.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.18.60.1","172.18.60.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.18.9.1","172.18.9.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.20.98.1","172.20.98.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.21.25.1","172.21.25.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.21.123.1","172.21.123.254"));
-//        ips.addAll(ComUtil.getAllIPS("172.21.129.1","172.21.129.254"));
+        List<String> ips = ComUtil.getAllIPS("172.16.13.1","172.16.13.254");
+//        List<String> ips = ComUtil.getAllIPS("172.16.2.1","172.16.2.254");
         LocalLogUtil.writeSqllog("total: " + ips.size(),"Device.txt");
         List<SNMPConfig> snmpConfigList = new ArrayList<SNMPConfig>();
         //V2C
         SNMPConfig target  = new SNMPConfig();
         snmpConfigList.add(target);
         //V1
-        SNMPConfig target2 = new SNMPConfig();
-        target2.setReadCommunity("acorn");
-        snmpConfigList.add(target2);
-
-        SNMPConfig target3 = new SNMPConfig();
-        target3.setReadCommunity("test");
-        snmpConfigList.add(target3);
+//        SNMPConfig target2 = new SNMPConfig();
+//        target2.setReadCommunity("public");
+//        snmpConfigList.add(target2);
+//
+//        SNMPConfig target3 = new SNMPConfig();
+//        target3.setReadCommunity("test");
+//        snmpConfigList.add(target3);
 //        new Thread() {
 //            public void run() {
 //                    for (int x = 0; x < 100; x++) {
