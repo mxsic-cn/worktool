@@ -2,7 +2,7 @@ package cn.mysic.domain;
 
 import cn.mysic.log.print.LocalLogUtil;
 import cn.mysic.util.NumberUtil;
-import com.sun.xml.internal.bind.v2.util.EditDistance;
+//import com.sun.xml.internal.bind.v2.util.EditDistance;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -57,7 +57,7 @@ public class DomainEditDistance {
                     if (todoD.equals(str)) {
                         continue;
                     }
-                    int distance = EditDistance.editDistance(todoD, str);
+                    int distance = 0;//EditDistance.editDistance(todoD, str);
                     if (map.containsKey(String.valueOf(distance))) {
                         map.put(String.valueOf(distance), map.get(String.valueOf(distance)) + 1);
                     } else {
