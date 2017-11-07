@@ -3,7 +3,7 @@ package cn.mysic.snmp.mib;
 import cn.mysic.snmp.util.SNMPOID;
 
 /**
- * Created by liuchuan on 8/14/16.
+ * Created by liuchuan on java8/14/16.
  */
 @SNMPOID(".1.3.6.1.2.1.4.22.1")
 public class IpNetToMediaEntry {

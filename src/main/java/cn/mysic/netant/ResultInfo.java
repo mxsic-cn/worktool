@@ -7,7 +7,7 @@ import java.util.List;
  * Created by liuchuan on 6/12/17.
  */
 public class ResultInfo {
-    private List<Integer> faildIndex = new ArrayList<>();
+    private List<Integer>  faildIndex = new ArrayList<Integer>();
 
     public synchronized void addFiledIndex(Integer integer){
         faildIndex.add(integer);

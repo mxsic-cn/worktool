@@ -34,7 +34,7 @@ public static final String GET_URL = "http://www.jiucool.com/request.php?key=j0r
         System.out.println("============================="); 
         String lines; 
         while ((lines = reader.readLine()) != null){ 
-        //lines = new String(lines.getBytes(), "utf-8"); 
+        //lines = new String(lines.getBytes(), "utf-java8");
             System.out.println(lines); 
         } 
         reader.close(); 
@@ -82,7 +82,7 @@ public static void readContentFromPost(String serid,int i) throws IOException{
         // ��˼��������urlencoded�������form�������������ǿ��Կ������Ƕ���������ʹ��URLEncoder.encode 
         // ���б��� 
 //   connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded"); 
-//  connection.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.8");
+//  connection.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.java8");
         // ���ӣ���postUrl.openConnection()���˵����ñ���Ҫ��connect֮ǰ��ɣ� 
         // Ҫע�����connection.getOutputStream�������Ľ���connect�� 
         connection.connect(); 
@@ -91,7 +91,7 @@ public static void readContentFromPost(String serid,int i) throws IOException{
         // The URL-encoded contend 
         // ���ģ�����������ʵ��get��URL��'?'��Ĳ����ַ���һ�� 
         
-        String content = "sn="+serid+"&cn=&locale=&caller=&num=115859"; // + URLEncoder.encode("", "utf-8"); 
+        String content = "sn="+serid+"&cn=&locale=&caller=&num=115859"; // + URLEncoder.encode("", "utf-java8");
         // DataOutputStream.writeBytes���ַ����е�16λ��unicode�ַ���8λ���ַ���ʽд�������� 
         out.writeBytes(content); 
         out.flush(); 
