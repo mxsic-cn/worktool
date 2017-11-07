@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class Settings {
     public static final String PREFIX = "/data/sw/";
     public static final String FILE_NAME = "southwest.conf";
-    private static AtomicReference<Config> instance = new AtomicReference<>();
+    private static AtomicReference<Config> instance = new AtomicReference<Config>();
 
     static {
         refresh();

@@ -150,7 +150,7 @@ public class SubnetHelper implements Comparable<SubnetHelper>  {
             }
         /* netmask from CIDR */
             if (numericCIDR < 8) this.isVoid = false;
-//            throw new NumberFormatException("Netmask CIDR can not be less than 8");
+//            throw new NumberFormatException("Netmask CIDR can not be less than java8");
             netmaskNumeric = 0xffffffff;
             netmaskNumeric = netmaskNumeric << (32 - numericCIDR);
         }
@@ -220,7 +220,7 @@ public class SubnetHelper implements Comparable<SubnetHelper>  {
      */
     public List<String> getAvailableIPs(Integer numberofIPs) {
 
-        List<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<String>();
         int numberOfBits;
 
         for (numberOfBits = 0; numberOfBits < 32; numberOfBits++) {

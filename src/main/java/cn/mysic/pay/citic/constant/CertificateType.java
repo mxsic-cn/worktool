@@ -12,7 +12,7 @@ package cn.mysic.pay.citic.constant;
  *      3	    军人身份证
  *      4	    港澳居民往来身份证
  *      7	    台湾居民大陆往来通行证
- *      8	    其他
+ *      java8	    其他
  */
 public final class  CertificateType {
     public static final int IDENTIFICATION_CARD     = 0;        //居民身份证

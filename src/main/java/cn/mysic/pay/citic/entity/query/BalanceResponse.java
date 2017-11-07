@@ -22,7 +22,7 @@ import java.io.Serializable;
  <accountName></accountName><!--账户名称 varchar(122)-->
  <currencyID></currencyID><!--币种 char(2)-->
  <openBankName></openBankName><!--开户行名称 varchar(122)-->
- <lastTranDate></lastTranDate><!--最近交易日 char(8)-->
+ <lastTranDate></lastTranDate><!--最近交易日 char(java8)-->
  <usableBalance></usableBalance><!--可用账户余额 decimal(15,2)-->
  <balance></balance><!-账号余额--decimal(15,2)--->
  <forzenAmt></forzenAmt><!--冻结（或看管）金额decimal(15,2)-->

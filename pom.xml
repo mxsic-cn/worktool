@@ -24,6 +24,18 @@
     <scm>
         <url>https://github.com/siqishangshu/worktool</url>
     </scm>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <cdh.version>cdh5.5.2</cdh.version>
+        <!--add  maven release-->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <encoding>UTF-8</encoding>
+        <scala.tools.version>2.10</scala.tools.version>
+        <scala.version>2.10.4</scala.version>
+    </properties>
 <dependencies>
     <dependency>
         <groupId>org.apache.commons</groupId>
@@ -52,9 +64,9 @@
         <version>1.4.7</version>
     </dependency>
     <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>1.7.7</version>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
     </dependency>
     <dependency>
         <groupId>javax.jms</groupId>
@@ -127,11 +139,75 @@
         <version>1.1.11</version>
     </dependency>
     <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.12</version>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>1.1.11</version>
     </dependency>
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-access</artifactId>
+        <version>1.1.11</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.21</version>
+    </dependency>
+    <dependency>
+        <groupId>org.snmp4j</groupId>
+        <artifactId>snmp4j</artifactId>
+        <version>2.5.0</version>
+    </dependency>
+    <!--<dependency>-->
+        <!--<groupId>org.mybatis.generator</groupId>-->
+        <!--<artifactId>mybatis-generator-core</artifactId>-->
+        <!--<version>1.3.5</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+        <!--<groupId>com.googlecode.flyway</groupId>-->
+        <!--<artifactId>flyway-core</artifactId>-->
+        <!--<version>2.3.1</version>-->
+    <!--</dependency>-->
 </dependencies>
+    <!--<profiles>-->
+    <!--<profile>-->
+        <!--<id>dev</id>-->
+        <!--<properties>-->
+            <!--<packageType>jar</packageType>-->
+            <!--<activedProfile>dev</activedProfile>-->
+            <!--<version-suffix>SNAPSHOT</version-suffix>-->
+        <!--</properties>-->
+        <!--<build>-->
+            <!--<plugins>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.mybatis.generator</groupId>-->
+                    <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+                    <!--<version>1.3.5</version>-->
+                    <!--<configuration>-->
+                        <!--<configurationFile>${basedir}/../resources/mybatis/generatorConfig.xml</configurationFile>-->
+                        <!--<overwrite>true</overwrite>-->
+                        <!--<verbose>true</verbose>-->
+                    <!--</configuration>-->
+                    <!--<dependencies>-->
+                        <!--<dependency>-->
+                            <!--<groupId>mysql</groupId>-->
+                            <!--<artifactId>mysql-connector-java</artifactId>-->
+                            <!--<version>5.1.39</version>-->
+                        <!--</dependency>-->
+                    <!--</dependencies>-->
+                <!--</plugin>-->
+            <!--</plugins>-->
+        <!--</build>-->
+        <!--<activation>-->
+            <!--<activeByDefault>true</activeByDefault>-->
+        <!--</activation>-->
+    <!--</profile>-->
+    <!--</profiles>-->
 </project>
 
 

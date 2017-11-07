@@ -43,7 +43,7 @@ public static void readContentFromPost(String filename) throws IOException{
 //		BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream())); 
 //         String line = "";
 //        while ((line = reader.readLine()) != null){ 
-//             line = new String(line.getBytes(), "utf-8");
+//             line = new String(line.getBytes(), "utf-java8");
 //        		System.out.println(line); 
 //        } 
 //        reader.close(); 

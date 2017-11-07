@@ -11,6 +11,10 @@ public class Program {
     public static void main(String[] args) {
         Logger logger = LoggerFactory.getLogger(Program.class);
         logger.info("log slf4j logger");
-        System.out.println("SDFl");
+        logger.info("log slf4j logger");
+        logger.debug("log slf4j logger");
+        logger.info("log slf4j logger");
+        logger.info("log slf4j logger");
+        logger.error("SDFl");
     }
 }

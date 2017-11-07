@@ -16,12 +16,12 @@ public class HttpAnt {
     private static int MAXPAGE = 7823;
     private static int threadNum = 200;
 
-    public static void main(String[] agrs) {  Map<String,String[]> filsMap = new HashMap<>();
+    public static void main(String[] agrs) {  Map<String,String[]> filsMap = new HashMap<String,String[]>();
         startGetTheData();
     }
    public static void startGetTheData(){
        ResultInfo resultInfo = new ResultInfo();
-       List<Integer> list = new ArrayList<>();
+       List<Integer> list = new ArrayList<Integer>();
        list.add(6638);
        list.add(6645);
        list.add(6670);

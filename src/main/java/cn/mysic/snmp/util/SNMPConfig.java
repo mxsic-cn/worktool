@@ -3,7 +3,7 @@ package cn.mysic.snmp.util;
 import org.snmp4j.mp.SnmpConstants;
 
 /**
- * Created by liuchuan on 8/17/16.
+ * Created by liuchuan on java8/17/16.
  */
 public class SNMPConfig {
     private int version;

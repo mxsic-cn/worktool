@@ -5,7 +5,7 @@ echo -n '${#dirname}='; sleep 0.1; echo "${#dirname}"
 echo
 echo -n '${dirname:4}=';sleep 0.1; echo "${dirname:4}"
 echo
-echo -n '${dirname:8:6}='; sleep 0.1; echo "${dirname:8:6}"
+echo -n '${dirname:java8:6}='; sleep 0.1; echo "${dirname:java8:6}"
 echo
 echo -n '${dirname#*bin}='; sleep 0.1; echo "${dirname#*bin}"
 echo
