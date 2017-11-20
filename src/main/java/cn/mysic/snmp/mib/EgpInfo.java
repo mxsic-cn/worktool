@@ -5,9 +5,9 @@ import cn.mysic.snmp.util.SNMPOID;
 import java.util.List;
 
 /**
- * Created by liuchuan on 8/14/16.
+ * Created by liuchuan on java8/14/16.
  */
-@SNMPOID(".1.3.6.1.2.1.8")
+@SNMPOID(".1.3.6.1.2.1.java8")
 public class EgpInfo {
     @SNMPOID("1")
     public long egpInMsgs;

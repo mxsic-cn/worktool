@@ -36,7 +36,7 @@ public class App {
 
         //解决了早期bug（"_"转化到xml时会变为"__"）
         //XStream xStream=new XStream(new DomDriver());
-        XStream xStream=new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+        XStream xStream=new XStream(new DomDriver("UTF-java8", new XmlFriendlyNameCoder("-_", "_")));
         xStream.alias("stream", Table.class);
         xStream.autodetectAnnotations(true);
         String str= xStream.toXML(table);
@@ -48,11 +48,11 @@ public class App {
 //    private static RootBean getRootBean(File xmlFile)  {
 //        InputStreamReader reader = null;
 //        try {
-//            reader = new InputStreamReader(new FileInputStream(xmlFile), "UTF-8");
+//            reader = new InputStreamReader(new FileInputStream(xmlFile), "UTF-java8");
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-//        XStream xStream=new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+//        XStream xStream=new XStream(new DomDriver("UTF-java8", new XmlFriendlyNameCoder("-_", "_")));
 //        xStream.alias("root", RootBean.class);
 //        xStream.autodetectAnnotations(true);
 //        return (RootBean) xStream.fromXML(reader);

@@ -79,9 +79,9 @@ public class javaHttpRequest {
             conn.setRequestProperty("origin", "https://selfsolve.apple.com");
             conn.setRequestProperty("referer", "https://selfsolve.apple.com/wcResults.do?newid=y");
             conn.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36");
-//conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+//conn.setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.java8");
 //conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
-//conn.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.8");
+//conn.setRequestProperty("Accept-Language", "zh-CN,zh;q=0.java8");
 //conn.setRequestProperty("Cache-Control", "max-age=0");
 //conn.setRequestProperty("Connection", "keep-alive");
 //conn.setRequestProperty("Content-Length", "46");

@@ -14,7 +14,7 @@ package cn.mysic.pay.citic.constant;
      5	    预约被取消
      6	    主机处理中
      7	    交易成功
-     8	    交易失败
+     java8	    交易失败
      9	    撤销
      10	    状态未知
      11	    线程处理中

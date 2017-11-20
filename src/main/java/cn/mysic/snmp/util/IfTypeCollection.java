@@ -3,7 +3,7 @@ package cn.mysic.snmp.util;
 import java.util.HashMap;
 
 /**
- * Created by liuchuan on 8/17/16.
+ * Created by liuchuan on java8/17/16.
  */
 public class IfTypeCollection {
 

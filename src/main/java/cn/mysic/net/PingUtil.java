@@ -3,9 +3,10 @@ package cn.mysic.net;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.InetAddress;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -140,4 +141,56 @@ public class PingUtil {
 			return false;
 		}
 	}
+
+	void printReachableIP(InetAddress remoteAddr, int port){
+		String retIP = null;
+
+		Enumeration<NetworkInterface> netInterfaces;
+		try{
+			netInterfaces = NetworkInterface.getNetworkInterfaces();
+			while(netInterfaces.hasMoreElements()) {
+				NetworkInterface ni = netInterfaces.nextElement();
+				Enumeration<InetAddress> localAddrs = ni.getInetAddresses();
+				while(localAddrs.hasMoreElements()){
+					InetAddress localAddr = localAddrs.nextElement();
+					if(isReachable(localAddr, remoteAddr, port, 5000)){
+						retIP = localAddr.getHostAddress();
+						break;
+					}
+				}
+			}
+		} catch(SocketException e) {
+			System.out.println(
+					"Error occurred while listing all the local network addresses.");
+		}
+		if(retIP == null){
+			System.out.println("NULL reachable local IP is found!");
+		}else{
+			System.out.println("Reachable local IP is found, it is " + retIP);
+		}
+	}
+
+	private static boolean isReachable(InetAddress localInetAddr, InetAddress remoteInetAddr, int port, int timeout) {
+		boolean isReachable = false;
+		Socket socket = null;
+		try{
+			socket = new Socket();
+			SocketAddress localSocketAddr = new InetSocketAddress(localInetAddr, 0);
+			socket.bind(localSocketAddr);
+			InetSocketAddress endpointSocketAddr = new InetSocketAddress(remoteInetAddr, port);
+			socket.connect(endpointSocketAddr, timeout);
+			isReachable = true;
+		} catch(IOException e) {
+
+		} finally{
+			if(socket != null) {
+				try{
+					socket.close();
+				} catch(IOException e) {
+				}
+			}
+		}
+		return isReachable;
+	}
+
 }

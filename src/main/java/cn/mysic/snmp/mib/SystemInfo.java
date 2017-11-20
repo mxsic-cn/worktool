@@ -5,7 +5,7 @@ import cn.mysic.snmp.util.SNMPOID;
 import java.io.Serializable;
 
 /**
- * Created by liuchuan on 8/11/16.
+ * Created by liuchuan on java8/11/16.
  */
 @SNMPOID(".1.3.6.1.2.1.1")
 public class SystemInfo implements Serializable{

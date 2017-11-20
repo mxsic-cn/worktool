@@ -1,15 +1,12 @@
 package cn.mysic.pinyin4j;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 
 /**
  * Created by liuchuan on 12/1/16.
  */
 public class LogUtil {
-    private static String filePath = "/home/liuchuan/Documents/txt/guiyi";
+    private static String filePath = "txt";
     private static String fileName = "data.log";
 
     public static void writeLog(String log ){
@@ -19,6 +16,7 @@ public class LogUtil {
      * the sql log should be write one day a file .
      */
     public static void writeLog(String log,String fileName){
+        String encoding = "UTF-java8";
         LogUtil.fileName = fileName;
         File  file = new File(filePath);
         if(!file.exists()){
@@ -28,7 +26,7 @@ public class LogUtil {
         RandomAccessFile randomFile = null;
         String logInfo = makelog(log);
         try {
-            file = new File(filePath+File.separator+fileName);
+            file = new File(filePath+File.separator+fileName,encoding);
             if(!file.exists()){
                 file.createNewFile();
             }
@@ -48,6 +46,6 @@ public class LogUtil {
 
 
     private static String makelog(String log) {
-        return log+"\r\n";
+            return log+"\r\n";
     }
 }
