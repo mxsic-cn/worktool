@@ -297,6 +297,7 @@ public class SubnetHelper implements Comparable<SubnetHelper>  {
         return IntStream.range(baseIP, baseIP + numberOfIPs)
                 .mapToObj(this::convertNumericIpToSymbolic)
                 .collect(Collectors.toMap(e -> e, e -> origin));
+
     }
 
 
