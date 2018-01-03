@@ -16,7 +16,7 @@ public class HttpAnt {
     private static int MAXPAGE = 7823;
     private static int threadNum = 200;
 
-<<<<<<< HEAD
+
     public static void main(String[] agrs) {
         Map<String, String[]> filsMap = new HashMap<>();
         startGetTheData();
@@ -25,35 +25,6 @@ public class HttpAnt {
     public static void startGetTheData() {
         ResultInfo resultInfo = new ResultInfo();
         List<Integer> list = new ArrayList<>();
-        list.add(6638);
-        list.add(6645);
-        list.add(6670);
-        list.add(6671);
-        list.add(6697);
-        list.add(6702);
-        list.add(6715);
-        list.add(6729);
-        list.add(6730);
-        list.add(6735);
-        list.add(6738);
-        list.add(6739);
-        list.add(6741);
-        list.add(6742);
-        list.add(6743);
-        list.add(6753);
-        list.add(6785);
-        list.add(6798);
-        list.add(6837);
-        list.add(6844);
-        list.add(6857);
-        for (int i : list) {
-=======
-    public static void main(String[] agrs) {  Map<String,String[]> filsMap = new HashMap<String,String[]>();
-        startGetTheData();
-    }
-   public static void startGetTheData(){
-       ResultInfo resultInfo = new ResultInfo();
-       List<Integer> list = new ArrayList<Integer>();
        list.add(6638);
        list.add(6645);
        list.add(6670);
@@ -76,8 +47,6 @@ public class HttpAnt {
        list.add(6844);
        list.add(6857);
        for (int i:list) {
->>>>>>> dcf34e6e4673af23187ed47095fc456fbba96e1e
-//       for (int i = 6634 ; i <= MAXPAGE; i++) {
             new HttpTask(i, resultInfo).run();
         }
 //       threadPoolExe(resultInfo);
