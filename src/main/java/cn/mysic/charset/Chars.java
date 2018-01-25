@@ -1,7 +1,5 @@
 package cn.mysic.charset;
 
-import java.io.UnsupportedEncodingException;
-
 /**
  * Function: TODO: ADD FUNCTION <br>
  *
@@ -12,13 +10,9 @@ public class Chars {
     public static byte[] name;
 
     static {
-        try {
-            name = "水".getBytes("GBK");
+            name = ("平安测试六零零零七六六七八零零九").getBytes();
+        System.out.println(new String(name));
 
-        System.out.println(new String(name,"GBK"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
     }
 
 }
