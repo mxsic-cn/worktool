@@ -1,6 +1,9 @@
 package cn.mysic.flyway;
 
-import org.flywaydb.core.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Function: flyway db  <br>
  *
@@ -9,22 +12,11 @@ import org.flywaydb.core.*;
  */
 
 public class App {
-    public static void main(String[] args) {
-        // Create the Flyway instance
-        Flyway flyway = new Flyway();
-        // Point it to the database  jdbc:h2:file:./target/foobar
-        flyway.setDataSource("jdbc:mysql://127.0.0.1/flywayDB?useUnicode=true&characterEncoding=utf-8", "root", "root");
-        flyway.setLocations("mysql/migration");
-        flyway.setBaselineVersionAsString("2");
-        //合并
-//        flyway.migrate();
-        //校对
-//        flyway.validate();
-
-        //信息
-//        flyway.info();
-        // Start the migration
-        //清空
-        flyway.clean();
+    public static void main(String[] args) throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        TimeUnit.SECONDS.sleep(0);
+        for (int i = 0; i < 10; i++) {
+            executorService.submit(new FlyWayRunner("N"+i));
+        }
     }
 }

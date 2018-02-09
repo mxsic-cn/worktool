@@ -11,23 +11,20 @@ public class Subscriber  extends Thread {
          private class TextListener implements MessageListener {  
              final SampleUtilities.DoneLatch  monitor = new SampleUtilities.DoneLatch();
 
-             //���յ���ϢonMessage������(ʵ����MessageListener����)
-             public void onMessage(Message message) {  
+             public void onMessage(Message message) {
                  if (message instanceof TextMessage) {  
                      TextMessage  msg = (TextMessage) message;  
   
                      try {  
-                         System.out.println("�������߳�:��ȡ��Ϣ: " + msg.getText());  
+                         System.out.println(" : " + msg.getText());
                      } catch (JMSException e) {  
                          System.out.println("Exception in onMessage(): " + e.toString());  
                      }  
                  } else {  
-                    //�յ���TextMessage���͵���Ϣ��Publisherָʾ����Խ�������  
-                     monitor.allDone();  
+                     monitor.allDone();
                  }  
              }  
-         }//����TextListener Class�Ķ���  
-  
+         }
         /** 
          * Runs the thread. 
          */  
