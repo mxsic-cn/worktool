@@ -10,8 +10,8 @@ public class Test {
         public static void main(String[] args) {
             int xorNum = 12345;
 //            String res = "name&password";
-            String res = "12132182948273611213218294827361121321829482736112132182948273611213218294827361121321829482736112132182948273611213218294827361";
-            String key = "12132182948273611213218294827361121321829482736112132182948273611213218294827361121321829482736112132182948273611213218294827361";
+            String res = "1213218294827361121321829482213218294827361";
+            String key = "1213218294827";
             System.out.println("-------------------------BASE64 可逆--------------------------");
             String base64_encodedStr = BASE64Util.getInstance().encode(res);
             System.out.println("加密：" + base64_encodedStr);
