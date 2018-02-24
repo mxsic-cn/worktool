@@ -20,7 +20,7 @@
     </build>
 
     <packaging>jar</packaging>
-    <name>Work Tool Build</name>
+    <name>worktool</name>
     <description>Work Tool Build</description>
     <url>https://github.com/siqishangshu/worktool</url>
     <organization>
