@@ -1,5 +1,6 @@
 package cn.mysic.crypt;
 
+import com.sun.crypto.provider.SunJCE;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -12,17 +13,16 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
 
- /**
+/**
  * Function: TODO: ADD FUNCTION <br>
  *
+ * @author 木子旭
+ * @version %I%,%G%
  * @author: siqishangshu <br>
  * @date: 2018-02-09 13:36:00
-
+ * <p>
  * RSA 加密，签名，校验
- *
- * @author 木子旭
  * @since 2017年3月16日下午1:19:58
- * @version %I%,%G%
  */
 public class RSACoder {
     public static final String KEY_ALGORITHM = "RSA";
@@ -34,11 +34,8 @@ public class RSACoder {
     /**
      * 用私钥对信息生成数字签名
      *
-     * @param data
-     *            加密数据
-     * @param privateKey
-     *            私钥
-     *
+     * @param data       加密数据
+     * @param privateKey 私钥
      * @return
      * @throws Exception
      */
@@ -62,16 +59,11 @@ public class RSACoder {
     /**
      * 校验数字签名
      *
-     * @param data
-     *            加密数据
-     * @param publicKey
-     *            公钥
-     * @param sign
-     *            数字签名
-     *
+     * @param data      加密数据
+     * @param publicKey 公钥
+     * @param sign      数字签名
      * @return 校验成功返回true 失败返回false
      * @throws Exception
-     *
      */
     public static boolean verify(byte[] data, String publicKey, String sign)
             throws Exception {
@@ -118,7 +110,7 @@ public class RSACoder {
         for (int i = 0; i < data.length; i += 128) {
             byte[] doFinal = cipher.doFinal(ArrayUtils.subarray(data, i,
                     i + 128));
-            dataReturn = ArrayUtils.addAll(dataReturn,doFinal);
+            dataReturn = ArrayUtils.addAll(dataReturn, doFinal);
         }
         return dataReturn;
 //        return cipher.doFinal(data);
@@ -135,19 +127,25 @@ public class RSACoder {
      */
     public static byte[] decryptByPublicKey(byte[] data, String key)
             throws Exception {
+        byte[] dataReturn = null;
         // 对密钥解密
         byte[] keyBytes = decryptBASE64(key);
 
         // 取得公钥
-        X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(keyBytes);
+        X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
-        Key publicKey = keyFactory.generatePublic(x509KeySpec);
+        Key publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
 
         // 对数据解密
         Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
         cipher.init(Cipher.DECRYPT_MODE, publicKey);
-
-        return cipher.doFinal(data);
+        // 加密时超过117字节就报错。为此采用分段加密的办法来加密
+        for (int i = 0; i < data.length; i += 100) {
+            byte[] doFinal = cipher.doFinal(ArrayUtils.subarray(data, i,
+                    i + 100));
+            dataReturn = ArrayUtils.addAll(dataReturn, doFinal);
+        }
+        return dataReturn;
     }
 
     /**
@@ -176,15 +174,12 @@ public class RSACoder {
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
         // 加密时超过117字节就报错。为此采用分段加密的办法来加密
-//        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < data.length; i += 100) {
             byte[] doFinal = cipher.doFinal(ArrayUtils.subarray(data, i,
                     i + 100));
-//            sb.append(new String(doFinal));
             dataReturn = ArrayUtils.addAll(dataReturn, doFinal);
         }
         return dataReturn;
-//        return cipher.doFinal(data);
     }
 
     /**
@@ -198,19 +193,25 @@ public class RSACoder {
      */
     public static byte[] encryptByPrivateKey(byte[] data, String key)
             throws Exception {
-        // 对密钥解密
+        byte[] dataReturn = null;
+        // 对私钥解密
         byte[] keyBytes = decryptBASE64(key);
-
         // 取得私钥
-        PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(keyBytes);
+        PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
-        Key privateKey = keyFactory.generatePrivate(pkcs8KeySpec);
+        Key privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
 
         // 对数据加密
         Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
         cipher.init(Cipher.ENCRYPT_MODE, privateKey);
 
-        return cipher.doFinal(data);
+        // 加密时超过117字节就报错。为此采用分段加密的办法来加密
+        for (int i = 0; i < data.length; i += 100) {
+            byte[] doFinal = cipher.doFinal(ArrayUtils.subarray(data, i,
+                    i + 100));
+            dataReturn = ArrayUtils.addAll(dataReturn, doFinal);
+        }
+        return dataReturn;
     }
 
     /**
@@ -256,6 +257,7 @@ public class RSACoder {
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         // 私钥
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+        Security.addProvider(new SunJCE());
         Map<String, Object> keyMap = new HashMap<String, Object>(2);
         keyMap.put(PUBLIC_KEY, publicKey);
         keyMap.put(PRIVATE_KEY, privateKey);
