@@ -96,6 +96,8 @@ public class javaHttpRequest {
     }
 
 
+
+
     public static void main(String[] args) {
 //        String s=javaHttpRequest.sendGet("http://user.qzone.qq.com/277134650", "");
 //        System.out.println(s);
