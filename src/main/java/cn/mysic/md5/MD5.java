@@ -167,7 +167,12 @@ public class MD5 {
     ;
 
     public static void main(String[] args) {
-        String str = MD5.getInstance().getMD5("admin123");
-        System.out.println(str);
+//        String str = MD5.getInstance().getMD5("admin123");
+//        System.out.println(str);
+        String big="AB";
+        String low="ab";
+        double d= 1.00;
+        boolean b = big.equals(low);
+        System.out.println(d);
     }
 }
