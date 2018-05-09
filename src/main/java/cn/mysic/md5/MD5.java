@@ -1,5 +1,8 @@
 package cn.mysic.md5;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by liuchuan on 12/9/16.
  */
@@ -169,10 +172,28 @@ public class MD5 {
     public static void main(String[] args) {
 //        String str = MD5.getInstance().getMD5("admin123");
 //        System.out.println(str);
-        String big="AB";
-        String low="ab";
-        double d= 1.00;
-        boolean b = big.equals(low);
-        System.out.println(d);
+//        String big="AB";
+//        String low="ab";
+//        double d= 1.00;
+//        boolean b = big.equals(low);
+//        System.out.println(d);
+        int b = 0;
+
+            try {
+                while (true) {
+                        if (b>3) {
+
+                            System.out.println("***********");
+                            break;
+                        }
+                    TimeUnit.SECONDS.sleep(1);
+                        b++;
+                    System.out.println(new Date());
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
     }
 }

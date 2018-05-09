@@ -99,12 +99,12 @@ public class javaHttpRequest {
 
 
     public static void main(String[] args) {
-//        String s=javaHttpRequest.sendGet("http://user.qzone.qq.com/277134650", "");
-//        System.out.println(s);
-        String message = "A0012601013265                0000000213000000PA001012017122015493620171220154935000001999999                                                                                                    000000            00000000000131001                20171220154936999999                                          000000091PA00120171220154935000001326515000089773402&6217853600037518888&1232.12&3265000000001377&中国银行&RMB&20171220&充值测试&";
-        String sr = javaHttpRequest.sendPost("http://127.0.0.1:8080/api/v1/pingan/notifyByBank", message);
+        String s=javaHttpRequest.sendPost("http://cus.3zang.net:22222/api/v1/alipay/notify", "");
+        System.out.println(s);
+//        String message = "A0012601013265                0000000213000000PA001012017122015493620171220154935000001999999                                                                                                    000000            00000000000131001                20171220154936999999                                          000000091PA00120171220154935000001326515000089773402&6217853600037518888&1232.12&3265000000001377&中国银行&RMB&20171220&充值测试&";
+//        String sr = javaHttpRequest.sendPost("http://127.0.0.1:8080/api/v1/pingan/notifyByBank", message);
 //        sr = javaHttpRequest.sendPost(message);
-        System.out.println(sr);
+//        System.out.println(sr);
     }
 
     private static String sendPost(String message) {
