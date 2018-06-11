@@ -1,7 +1,6 @@
 package cn.mysic.redis;
 
 import cn.mysic.mysql.MysqlTest;
-import org.redisson.api.RLock;
 import redis.clients.jedis.Jedis;
 
 import java.sql.Connection;
@@ -20,19 +19,19 @@ import java.util.concurrent.TimeUnit;
  */
 public class RedisLock {
 
-    private static final int LOCK_TIME = 30;
-    private static final int WAIT_TIME_UNIT = 1;
+    private static final int WAIT_UNLOCK_TIME = 1;
+    private static final int WAIT_LOCK_TIME = 1;
     private static RedisPoolManager redisPoolManager = new RedisPoolManager();
     private static String id = "COUNT";
-    private static RLock lock;
 
     public static void main(String[] args) {
+        Date start = new Date();
         System.out.println("LOCK start ");
         System.out.println("clear lock ");
-        Jedis jedis = redisPoolManager.getJedis();
-        String key = getAccountKey(id);
-        jedis.del(key);
-        jedis.close();
+//        Jedis jedis = redisPoolManager.getJedis();
+//        String key = getAccountKey(id);
+//        jedis.del(key);
+//        jedis.close();
         Statement st = null;
         Connection conn = null;
         try {
@@ -43,18 +42,17 @@ public class RedisLock {
             e.printStackTrace();
         }
         ExecutorService executorService = Executors.newFixedThreadPool(50);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 1000; i++) {
             Statement finalSt = st;
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < 100; j++) {
+                    for (int j = 0; j < 2000; j++) {
                         String n = Double.toString(Math.random());
                         try {
 
                             if (payLock(id, j + "name" + n)) {
                                 MysqlTest.queryCount(finalSt);
-//                                payUnLock(id);
                             } else {
                                 System.out.println("LOCK ERROR");
                             }
@@ -77,24 +75,8 @@ public class RedisLock {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("LOCK end ");
-    }
-
-    private static void checkKey(String id) {
-        Jedis jedis = redisPoolManager.getJedis();
-        String key = getAccountKey(id);
-        while (jedis.exists(key)) {
-            System.out.println(new Date());
-            try {
-                TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } finally {
-                jedis.close();
-            }
-        }
-        System.out.println("END " + new Date());
-
+        redisPoolManager.getJedis().close();
+        System.out.println("START "+start+"  LOCK end "+ new Date());
     }
 
     public static boolean payLock(String id, String name) {
@@ -105,21 +87,18 @@ public class RedisLock {
                 if (!jedis.exists(key)) {
                     if (jedis.setnx(key, key) == 1) {
                         System.out.println(name + " 加锁 成功");
-                        break;
+                        jedis.close();
+                        return true;
                     }
                 }
-                /**
-                 * 提前还回链接池
-                 */
                 System.out.println(name + " 加锁等待 :" + jedis.exists(key));
                 jedis.close();
-                TimeUnit.SECONDS.sleep(WAIT_TIME_UNIT);
+                TimeUnit.SECONDS.sleep(WAIT_LOCK_TIME);
             }
         } catch (Exception e) {
             System.out.println("LOCK ACCOUNT ERROR" + e.getMessage());
             return false;
         }
-        return true;
     }
 
     private static String getAccountKey(String id) {
@@ -134,12 +113,13 @@ public class RedisLock {
                 if (jedis.isConnected()) {
                     if (jedis.del(key) == 1) {
                         System.out.println(name + " 解锁 成功 ");
+                        jedis.close();
                         break;
                     }
                 }
                 System.out.println(name + " 解锁等待 :" + jedis.exists(key));
                 jedis.close();
-                TimeUnit.SECONDS.sleep(WAIT_TIME_UNIT);
+                TimeUnit.SECONDS.sleep(WAIT_UNLOCK_TIME);
             }
         } catch (Exception e) {
             System.out.println("UNLOCK ACCOUNT ERROR" + e.getMessage());

@@ -18,13 +18,16 @@ public class RedisPoolManager {
 
     {
         JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxIdle(100);
-        config.setMaxTotal(200);
+        config.setMaxTotal(100);
+//        config.setMaxTotal(1);
         pool = new JedisPool(config, host);
     }
 
 
     public Jedis getJedis() {
+        System.out.println("waiters "+pool.getNumWaiters());
+        System.out.println("active "+pool.getNumActive());
+        System.out.println("idle "+pool.getNumIdle());
         return pool.getResource();
     }
 }
