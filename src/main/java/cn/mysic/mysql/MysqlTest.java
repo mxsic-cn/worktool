@@ -11,6 +11,17 @@ import java.util.concurrent.TimeUnit;
  *
  * @author: siqishangshu <br>
  * @date: 2018-04-19 11:15:00
+ * <p>
+ * <p>
+ * use flywayDB;
+ * CREATE TABLE IF NOT EXISTS `account` (
+ * `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+ * `count` INT(25) NOT NULL COMMENT '计数',
+ * `lock` TINYINT  DEFAULT 0 COMMENT '锁',
+ * PRIMARY KEY (`id`))
+ * ENGINE = InnoDB
+ * DEFAULT CHARACTER SET = utf8
+ * COMMENT = '表';
  */
 public class MysqlTest {
 
@@ -69,7 +80,7 @@ public class MysqlTest {
 
     public static void queryCount(Statement st) {
         try {
-            String sql = "select count from account_test where id ='123' ";
+            String sql = "select count from account where id ='123' ";
             ResultSet rs = st.executeQuery(sql);
             int count = 0;
             while (rs.next()) {
@@ -85,13 +96,13 @@ public class MysqlTest {
     }
 
     private static void updateCount(Statement st, int count) throws SQLException {
-        String sql2 = "UPDATE account_test SET count = " + (count + 1) + " WHERE id = '123' ";
+        String sql2 = "UPDATE account SET count = " + (count + 1) + " WHERE id = '123' ";
         int re = st.executeUpdate(sql2);
 //        System.out.println(re>0?"count 更新成功"+count + 1:re);
     }
 
     public static boolean payLock(Statement st) {
-        String sql1 = "UPDATE account_test SET reserve = 'LOCKED' WHERE id = '123' and (reserve !='LOCKED'  OR reserve is null)";
+        String sql1 = "UPDATE account SET lock = 1 WHERE id = '123' and lock =0  ";
         try {
             while (true) {
                 if (isUnlock(st)) {
@@ -111,7 +122,7 @@ public class MysqlTest {
     }
 
     public static boolean payUnLock(Statement st) {
-        String sql3 = "UPDATE account_test SET reserve = 'UNLOCK'";//  WHERE id = '123' and (reserve ='LOCKED'  OR reserve is null)";
+        String sql3 = "UPDATE account SET lock = 0";//  WHERE id = '123' and (reserve ='LOCKED'  OR reserve is null)";
         try {
             while (true) {
                 if (isLocked(st)) {
@@ -119,7 +130,7 @@ public class MysqlTest {
                         System.out.println("UNLOCK 成功");
                         return true;
                     }
-                }else {
+                } else {
                     return true;
                 }
                 int time = 1;
@@ -133,7 +144,7 @@ public class MysqlTest {
     }
 
     private static boolean isUnlock(Statement st) throws SQLException {
-        String sql2 = "select count(*) as count from account_test WHERE id = '123'  and (reserve !='LOCKED' OR reserve is null) ";
+        String sql2 = "select count(*) as count from account WHERE id = '123'  and lock =0  ";
         ResultSet rs = st.executeQuery(sql2);
         while (rs.next()) {
             return rs.getInt("count") > 0;
@@ -142,7 +153,7 @@ public class MysqlTest {
     }
 
     private static boolean isLocked(Statement st) throws SQLException {
-        String sql2 = "select count(*) as count from account_test  WHERE id = '123' and reserve ='LOCKED' ";
+        String sql2 = "select count(*) as count from account  WHERE id = '123' and lock =1 ";
         ResultSet rs = st.executeQuery(sql2);
         while (rs.next()) {
             return rs.getInt("count") > 0;

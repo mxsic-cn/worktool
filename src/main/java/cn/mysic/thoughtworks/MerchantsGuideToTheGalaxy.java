@@ -1,5 +1,6 @@
 package cn.mysic.thoughtworks;
 
+import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -230,29 +231,29 @@ public class MerchantsGuideToTheGalaxy {
     }
 
     private void scanner() {
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            String read = scanner.nextLine().trim();
-            if (read.equals("")) {
-                break;
-            }
-            words.put(read,0);
-        }
-//        try {
-//            String path = MerchantsGuideToTheGalaxy.class.getClassLoader().getResource("input.txt").getPath();
-//            InputStreamReader read = new InputStreamReader(
-//                    new FileInputStream(path));
-//            BufferedReader bufferedReader = new BufferedReader(read);
-//            String word;
-//            while ((word = bufferedReader.readLine()) != null) {
-//                words.put(word, 0);
-//                System.out.println(word);
+//        Scanner scanner = new Scanner(System.in);
+//        while (true) {
+//            String read = scanner.nextLine().trim();
+//            if (read.equals("")) {
+//                break;
 //            }
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
+//            words.put(read,0);
 //        }
+        try {
+            String path = MerchantsGuideToTheGalaxy.class.getClassLoader().getResource("input.txt").getPath();
+            InputStreamReader read = new InputStreamReader(
+                    new FileInputStream(path));
+            BufferedReader bufferedReader = new BufferedReader(read);
+            String word;
+            while ((word = bufferedReader.readLine()) != null) {
+                words.put(word, 0);
+                System.out.println(word);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void init() {

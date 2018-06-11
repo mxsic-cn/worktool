@@ -1,5 +1,7 @@
 package cn.mysic.charset;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Function: TODO: ADD FUNCTION <br>
  *
@@ -7,12 +9,17 @@ package cn.mysic.charset;
  * @date: 2018-01-02 10:34:00
  */
 public class Chars {
-    public static byte[] name;
-
-    static {
-            name = ("平安测试六零零零七六六七八零零九").getBytes();
-        System.out.println(new String(name));
-
+    public static void main(String[] args) {
+        char a = 'A';
+        String as ="A";
+        try {
+            while (true){
+                System.out.println(as);
+                TimeUnit.SECONDS.sleep(10);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

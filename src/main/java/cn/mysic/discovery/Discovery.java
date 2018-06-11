@@ -80,7 +80,7 @@ public class Discovery {
     public static void main(String[] args) {
         Discovery test = new Discovery();
 
-        List<String> ips = ComUtil.getAllIPS("172.16.13.1","172.16.13.254");
+        List<String> ips = ComUtil.getAllIPS("192.168.0.1","192.168.0.254");
 //        List<String> ips = ComUtil.getAllIPS("172.16.2.1","172.16.2.254");
         LocalLogUtil.writeSqllog("total: " + ips.size(),"Device.txt");
         List<SNMPConfig> snmpConfigList = new ArrayList<SNMPConfig>();

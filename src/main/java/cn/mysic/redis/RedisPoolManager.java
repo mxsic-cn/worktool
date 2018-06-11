@@ -2,6 +2,7 @@ package cn.mysic.redis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * Function: TODO: ADD FUNCTION <br>
@@ -16,7 +17,10 @@ public class RedisPoolManager {
     private JedisPool pool;
 
     {
-        pool = new JedisPool(host, port);
+        JedisPoolConfig config = new JedisPoolConfig();
+        config.setMaxIdle(100);
+        config.setMaxTotal(200);
+        pool = new JedisPool(config, host);
     }
 
 

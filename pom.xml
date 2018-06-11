@@ -244,7 +244,7 @@
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
-            <version>3.5.0</version>
+            <version>3.7.0</version>
         </dependency>
     </dependencies>
     <repositories>
