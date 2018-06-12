@@ -42,12 +42,12 @@ public class RedisLock {
             e.printStackTrace();
         }
         ExecutorService executorService = Executors.newFixedThreadPool(50);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 2000; i++) {
             Statement finalSt = st;
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < 2000; j++) {
+                    for (int j = 0; j < 600; j++) {
                         String n = Double.toString(Math.random());
                         try {
 
@@ -76,7 +76,7 @@ public class RedisLock {
             e.printStackTrace();
         }
         redisPoolManager.getJedis().close();
-        System.out.println("START "+start+"  LOCK end "+ new Date());
+        System.out.println("START " + start + "  LOCK end " + new Date());
     }
 
     public static boolean payLock(String id, String name) {
@@ -84,12 +84,10 @@ public class RedisLock {
             String key = getAccountKey(id);
             while (true) {
                 Jedis jedis = redisPoolManager.getJedis();
-                if (!jedis.exists(key)) {
-                    if (jedis.setnx(key, key) == 1) {
-                        System.out.println(name + " 加锁 成功");
-                        jedis.close();
-                        return true;
-                    }
+                if (!jedis.exists(key) && jedis.setnx(key, key) == 1) {
+                    System.out.println(name + " 加锁 成功");
+                    jedis.close();
+                    return true;
                 }
                 System.out.println(name + " 加锁等待 :" + jedis.exists(key));
                 jedis.close();
@@ -111,7 +109,8 @@ public class RedisLock {
             while (true) {
                 Jedis jedis = redisPoolManager.getJedis();
                 if (jedis.isConnected()) {
-                    if (jedis.del(key) == 1) {
+                    if (!jedis.exists(key) ||
+                            jedis.del(key) == 1) {
                         System.out.println(name + " 解锁 成功 ");
                         jedis.close();
                         break;
