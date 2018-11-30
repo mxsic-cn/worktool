@@ -4,4 +4,4 @@
 /.bin
 /.build
 target/
-*.DS_Store
+.DS_Store
