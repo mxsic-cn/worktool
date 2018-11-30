@@ -1,11 +1,28 @@
 package cn.mysic.discovery.model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
 import cn.mysic.discovery.util.Constants;
-import cn.mysic.snmp.mib.*;
+import cn.mysic.snmp.mib.CdpCacheEntry;
+import cn.mysic.snmp.mib.Dot1dBasePortEntry;
+import cn.mysic.snmp.mib.Dot1dStpPortEntry;
+import cn.mysic.snmp.mib.Dot1dTpFdbEntry;
+import cn.mysic.snmp.mib.IfEntry;
+import cn.mysic.snmp.mib.IpAddrEntry;
+import cn.mysic.snmp.mib.IpNetToMediaEntry;
+import cn.mysic.snmp.mib.IpRouteEntry;
+import cn.mysic.snmp.mib.LldpLocPortEntry;
+import cn.mysic.snmp.mib.LldpRemEntry;
+import cn.mysic.snmp.mib.OspfNbrEntry;
+import cn.mysic.snmp.mib.SystemInfo;
+import cn.mysic.snmp.mib.TcpConnEntry;
+import cn.mysic.snmp.mib.UdpEntry;
 import cn.mysic.snmp.util.SNMPConfig;
-
-import java.util.*;
-
 public class DeviceInfo {
 	private String deviceIP = "";  //IP地址
 	private String deviceMAC = ""; //MAC地址
