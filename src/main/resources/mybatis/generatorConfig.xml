@@ -6,6 +6,7 @@
 <generatorConfiguration>
 
     <context id="MySQLTables" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.LombokPlugin" />
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="false"/>
@@ -13,41 +14,26 @@
             <property name="suppressDate" value="true"/>
         </commentGenerator>
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1/logistics?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull"
-                        userId="root" password="root">
+                        connectionURL="jdbc:mysql://mysql/logistics2?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull"
+                        userId="root" password="Rootroot1!">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
-        <!--
-        生成系统类时配置：com.hna.logistics.common.system.entity
-        生成基本业务类时配置：com.hna.logistics.data.biz.basic.entity
-        生成业务类时配置：com.hna.logistics.data.biz.entity
-        生成基本供应商类时配置：com.hna.logistics.data.sup.basic.entity
-        生成业务类时配置：
-        -->
-        <javaModelGenerator targetPackage="cn.mysic.common.model.pay"
+
+        <javaModelGenerator targetPackage="cn.mysic.mybatis"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
-        <!--
-        生成系统类时配置：com.hna.logistics.common.system
-        生成基本业务类时配置：com.hna.logistics.data.biz.basic.mapper
-        生成基本供应商类时配置：com.hna.logistics.data.sup.basic.mapper
-        生成业务类时配置：
-        -->
-        <sqlMapGenerator targetPackage="cn.mysic.common.model.pay"
+
+        <sqlMapGenerator targetPackage="cn.mysic.mybatis"
                          targetProject="src/main/resources/mapper">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <table schema="logistics" tableName="pay_citic_internal_request" domainObjectName="PayCTITCInternalRequest"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false" enableDeleteByPrimaryKey="true"
-               enableUpdateByPrimaryKey="true">
-            <property name="rootClass" value="com.hna.logistics.common.core.entity.EntityBase"/>
+        <table schema="logistics2" tableName="sup_user">
+            <property name="rootClass" value="cn.mysic.entity.EntityBase"/>
             <property name="useActualColumnNames" value="true"/>
         </table>
 
