@@ -79,7 +79,8 @@ public class ZplPrinter {
     public ZplPrinter(String printerURI) {
         this.printerURI = printerURI;
         //加载字体
-        File file = new File("/Users/siqishangshu/Desktop/ts24.lib");
+        String path = ZplPrinter.class.getClassLoader().getResource("ts24.lib").getPath();
+        File file = new File(path);
         if (file.exists()) {
             FileInputStream fis;
             try {
