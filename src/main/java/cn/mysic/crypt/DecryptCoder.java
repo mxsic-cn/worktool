@@ -1,11 +1,15 @@
 package cn.mysic.crypt;
+
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+
+import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
-import java.security.SecureRandom;
+
+import cn.mysic.tools.UUIDUtil;
 
 /**
  * Function: TODO: ADD FUNCTION <br>
@@ -75,8 +79,10 @@ public class DecryptCoder {
 
     }
     public static void main(String[] args){
-        String desencryptString = decrypt("B00542E93695F4CFCE34FC4393C2F4BF","test中英文杂七烂八混搭@123654{");
-        System.out.println(desencryptString);
+        System.out.println(UUIDUtil.getUUID());
+//        System.out.println("38587e48985a4ad99753d0392322e8c8".length());
+//        String desencryptString = decrypt("B00542E93695F4CFCE34FC4393C2F4BF","test中英文杂七烂八混搭@123654{");
+//        System.out.println(desencryptString);
     }
     //输出：is张三丰
 }

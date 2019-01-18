@@ -19,10 +19,10 @@ public class JacksonAnnotation {
                 .isLocked(true)
                 .name("name").build();
 //        System.out.println(supUser);
-//        System.out.println(JsonUtil.objectToJson(supUser));
+        System.out.println(JsonUtil.objectToJson(supUser));
 
         String json = "{\"id\":null,\"code\":\"code\",\"name\":\"name\",\"email\":null,\"mobilePhone\":null,\"isMaster\":null,\"isDeleted\":true,\"isLocked\":true,\"supplierId\":null,\"avatar\":null,\"needResetPwd\":true}";
 
-        System.out.println(JsonUtil.jsonToPojo(json, SupUser.class));
+//        System.out.println(JsonUtil.jsonToPojo(json, SupUser.class));
     }
 }

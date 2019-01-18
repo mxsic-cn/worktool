@@ -10,14 +10,19 @@ import java.util.regex.Pattern;
  */
 public class Regex {
     public static void main(String[] args) {
-        String content = "pish pish Iron is 3910 Credits".trim();
+//        String content = "pish pish Iron is 3910 Credits".trim();
 
 //        String pattern = "^((?:([a-zA-Z0-9_]+)+ )+)(([a-zA-Z0-9_]+)\\w+) is (\\d+) ([credits|Credits])$";
-        String pattern = " is (\\d+) (Credits|credits)$";
+//        String pattern = " is (\\d+) (Credits|credits)$";
 //        String pattern = "^([a-zA-Z0-9_]+){2,} is (\\d+) Credits$";
-        System.out.println(Pattern.matches(pattern,content));
-        System.out.println(intToRoman(99));
-        System.out.println(romanToInt("XCIX"));
+//        System.out.println(Pattern.matches(pattern,content));
+//        System.out.println(intToRoman(99));
+//        System.out.println(romanToInt("XCIX"));
+
+        String tmp = "PUT/api/v1/m/orders/TR6970565161130/status";
+
+        String description = Pattern.compile("\\d*[0-9]").matcher(tmp).replaceAll("{arg}");
+        System.out.println(description);
     }
 
     public static String intToRoman(int number) {
