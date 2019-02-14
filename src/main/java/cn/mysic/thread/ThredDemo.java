@@ -1,5 +1,9 @@
 package cn.mysic.thread;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 /**
  * Function: TODO: ADD FUNCTION <br>
  *
@@ -8,18 +12,35 @@ package cn.mysic.thread;
  */
 public class ThredDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         Demo demo = new ThredDemo().new Demo();
-        new Thread(demo).start();
-        while (true){
-//           synchronized (demo){
-               if(demo.isFlag()){
-                   System.out.println("##########");
-                   break;
+        Thread t1;
+      t1 =  new Thread(demo);
+       t1.setDaemon(true);
+       t1.run();
+
+        FutureTask futureTask = new FutureTask(new Callable() {
+            @Override
+            public Object call() throws Exception {
+                return 12349+12329 ;
+            }
+        });
+        t1 = new Thread(futureTask);
+//        System.out.println(futureTask.get());
+        t1.start();
+//        t1.run();
+        System.out.println(futureTask.get());
+
+//        while (true){
+////           synchronized (demo){
+//               if(demo.isFlag()){
+//                   System.out.println("##########");
+//                   break;
+////               }
 //               }
-               }
 //            System.out.println(demo.flag);
-        }
+//        }
+        System.exit(0);
     }
 
 
@@ -34,7 +55,7 @@ public class ThredDemo {
         @Override
         public void run() {
             try {
-                Thread.sleep(200);
+                Thread.sleep(2200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

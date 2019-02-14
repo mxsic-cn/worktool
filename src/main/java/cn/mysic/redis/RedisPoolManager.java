@@ -30,4 +30,11 @@ public class RedisPoolManager {
         System.out.println("idle "+pool.getNumIdle());
         return pool.getResource();
     }
+
+    public static void main(String[] args) {
+        RedisPoolManager redisPoolManager = new RedisPoolManager();
+        for (int i = 0; i < 10; i++) {
+            redisPoolManager.getJedis().lset("list",i,i+"");
+        }
+    }
 }

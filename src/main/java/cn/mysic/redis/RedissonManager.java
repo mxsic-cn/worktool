@@ -56,10 +56,12 @@ public class RedissonManager {
         if (rMap == null) {
             System.out.println("map is null");
         }
-        rMap.put("1","1");
-        rMap.put("2","1");
-        rMap.put("3","1");
-        rMap.put("4","1");
+        rMap.put(1,1);
+        rMap.put(2,1);
+        rMap.put(3,1);
+        rMap.put(4,1);
+
+
 
 //        RMap<String,String> rMap1 = getRedisson().getMap(TESTMAP);
 //        for (Map.Entry<String, String> entry : rMap1.entrySet()) {
