@@ -1,6 +1,7 @@
 package cn.mysic.java8;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Function: TODO: ADD FUNCTION <br>
@@ -10,9 +11,22 @@ import java.util.Arrays;
 public class Streams {
     public static void main(String[] args) {
         System.out.println("------------");
-        Arrays.stream("1231:1231:1231:1231:".split(":")).forEach(s -> {
-            System.out.println(s);
-        });
+//        Arrays.stream("1231:1231:1231:1231:".split(":")).forEach(s -> {
+//            System.out.println(s);
+//        });
+
+        List<Integer> list = new ArrayList<>();
+        list.add(123);
+        list.add(4);
+        list.add(243);
+        list.add(24);
+        list.add(54);
+//        Integer main = list.stream()
+          list.stream()
+                .filter(item -> item.intValue() >100).forEach(System.out::println);
+//                .filter(item -> item.intValue() >100).sorted().collect(Collectors.toList());
+//                .findAny().orElse(null);
+//        System.out.println(main);
 
 //        List<String> list = Arrays.asList("abel", "don", "bruce", "sean");
 //        list.stream().filter((String e1) -> (e1.length() > 3)).forEach((e) -> System.out.println(e));

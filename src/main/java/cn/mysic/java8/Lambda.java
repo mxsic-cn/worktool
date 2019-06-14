@@ -56,6 +56,7 @@ public class Lambda {
         strings.forEach(s -> System.out.println(s));
         strings.sort((e1, e2) -> e2.length() - e1.length());
         strings.forEach(s -> System.out.println(s));
+        strings.forEach(System.out::println);
         System.out.println("-----------------------");
         Comparator<String> sortByName = (String e1,String e2)->e1.length()-e2.length();
 

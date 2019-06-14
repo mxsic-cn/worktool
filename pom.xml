@@ -355,7 +355,7 @@
     <repositories>
         <repository>
             <id>snapshots</id>
-            <url>http://103.192.254.12:18081/repository/maven-public/</url>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
             <snapshots>
                 <enabled>false</enabled>
                 <updatePolicy>always</updatePolicy>
@@ -365,7 +365,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>nexus</id>
-            <url>http://103.192.254.12:18081/repository/maven-public/</url>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
         </pluginRepository>
     </pluginRepositories>
 </project>
