@@ -85,6 +85,11 @@
             <version>2.5.0</version>
         </dependency>
         <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.27-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.10</artifactId>
             <version>0.10.1.0</version>
@@ -303,7 +308,9 @@
                         <artifactId>mybatis-generator-maven-plugin</artifactId>
                         <version>1.3.7</version>
                         <configuration>
-                            <configurationFile>${basedir}/src/main/resources/mybatis/generatorConfig.xml</configurationFile>
+                            <configurationFile>
+                                ${basedir}/src/main/resources/mybatis/generatorConfig.xml
+                            </configurationFile>
                             <overwrite>false</overwrite>
                             <verbose>true</verbose>
                         </configuration>
@@ -322,34 +329,34 @@
             </activation>
         </profile>
         <!--<profile>-->
-            <!--<id>integration</id>-->
-            <!--<properties>-->
-                <!--<packageType>war</packageType>-->
-                <!--<activedProfile>integration</activedProfile>-->
-                <!--<version-suffix>INTEGRATION</version-suffix>-->
-            <!--</properties>-->
-            <!--<dependencies>-->
-                <!--<dependency>-->
-                    <!--<groupId>org.springframework.boot</groupId>-->
-                    <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-                    <!--<scope>provided</scope>-->
-                <!--</dependency>-->
-            <!--</dependencies>-->
+        <!--<id>integration</id>-->
+        <!--<properties>-->
+        <!--<packageType>war</packageType>-->
+        <!--<activedProfile>integration</activedProfile>-->
+        <!--<version-suffix>INTEGRATION</version-suffix>-->
+        <!--</properties>-->
+        <!--<dependencies>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--</dependencies>-->
         <!--</profile>-->
         <!--<profile>-->
-            <!--<id>prod</id>-->
-            <!--<properties>-->
-                <!--<packageType>war</packageType>-->
-                <!--<activedProfile>prod</activedProfile>-->
-                <!--<version-suffix>RELEASE</version-suffix>-->
-            <!--</properties>-->
-            <!--<dependencies>-->
-                <!--<dependency>-->
-                    <!--<groupId>org.springframework.boot</groupId>-->
-                    <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-                    <!--<scope>provided</scope>-->
-                <!--</dependency>-->
-            <!--</dependencies>-->
+        <!--<id>prod</id>-->
+        <!--<properties>-->
+        <!--<packageType>war</packageType>-->
+        <!--<activedProfile>prod</activedProfile>-->
+        <!--<version-suffix>RELEASE</version-suffix>-->
+        <!--</properties>-->
+        <!--<dependencies>-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--</dependencies>-->
         <!--</profile>-->
     </profiles>
     <repositories>
