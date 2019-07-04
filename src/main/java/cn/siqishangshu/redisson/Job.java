@@ -33,16 +33,5 @@ public class Job implements Runnable {
         RMap<String, Object> newMap = redisson.getMap("001_" + id);
         System.out.println("********************* 001_" + id);
         newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
-        newMap.put(UUID.randomUUID().toString(), UUID.randomUUID());
     }
 }

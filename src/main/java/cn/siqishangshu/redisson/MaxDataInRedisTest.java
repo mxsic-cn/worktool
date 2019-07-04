@@ -18,20 +18,22 @@ import java.util.concurrent.TimeUnit;
 public class MaxDataInRedisTest {
 
     private static int CORE_POOL_SIZE = 10;
-    private static int MAXIMUM_POOL_SIZE = Integer.MAX_VALUE;
+    private static int MAXIMUM_POOL_SIZE = 60;
     private static long KEEP_ALIVE_TIME = 30L;
 
     public static void main(String[] args) {
         Config config = new Config ();
         config.useSingleServer().setAddress("redis://192.168.1.168:6379");
         RedissonClient redisSon = Redisson.create(config);
+
         ExecutorService executor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.SECONDS, new SynchronousQueue<>());
-        for (int i = 0; i < 10000; i++) {
-//            for (int j = 0; j < 10; j++) {
-            Job job = new Job(i,redisSon);executor.execute(job);
-//            Job job = new Job(i);
+        for (int i = 0; i < 10000/MAXIMUM_POOL_SIZE; i++) {
+            for (int j = 0; j < MAXIMUM_POOL_SIZE; j++) {
+            Job job = new Job(i,redisSon);
             executor.execute(job);
-//            }
+//            Job job = new Job(i);
+//            executor.execute(job);
+            }
         }
     }
 
