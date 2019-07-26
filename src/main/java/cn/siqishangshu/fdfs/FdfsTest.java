@@ -17,7 +17,7 @@ public class FdfsTest {
      * 上传
      */
     public static void upload() throws Exception {
-        File file = new File("e6cc8f04-505b-4dc5-983e-d73d1e6ccf0a.pdf");
+        File file = new File("melaka.jpg");
         FileInputStream fileInputStream = new FileInputStream(file);
         byte[] bytes = new byte[fileInputStream.available()];
         fileInputStream.read(bytes);
