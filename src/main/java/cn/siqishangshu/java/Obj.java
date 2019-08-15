@@ -27,5 +27,7 @@ public class Obj {
         String k = new String("a");
         System.out.println(k.hashCode());
         System.out.println(Integer.MIN_VALUE);
+        byte b = 127;
+        System.out.println((long) b);
     }
 }
