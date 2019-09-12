@@ -21,19 +21,19 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="cn.siqishangshu.mybatis"
+        <javaModelGenerator targetPackage="cn.mxsic.mybatis"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="cn.siqishangshu.mybatis"
+        <sqlMapGenerator targetPackage="cn.mxsic.mybatis"
                          targetProject="src/main/resources/mapper">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <table schema="logistics2" tableName="sup_user">
-            <property name="rootClass" value="cn.siqishangshu.entity.EntityBase"/>
+            <property name="rootClass" value="cn.mxsic.entity.EntityBase"/>
             <property name="useActualColumnNames" value="true"/>
         </table>
 

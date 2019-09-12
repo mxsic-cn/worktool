@@ -3,7 +3,7 @@
 
     <servlet>
         <servlet-name>servlet</servlet-name>
-        <servlet-class>cn.siqishangshu.tomcat.MyServlet</servlet-class>
+        <servlet-class>cn.mxsic.tomcat.MyServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -13,7 +13,7 @@
 
      <servlet>
         <servlet-name>yourServlet</servlet-name>
-        <servlet-class>cn.siqishangshu.tomcat.YourServlet</servlet-class>
+        <servlet-class>cn.mxsic.tomcat.YourServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

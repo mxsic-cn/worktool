@@ -282,6 +282,11 @@
             <artifactId>jsoup</artifactId>
             <version>1.11.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.crab2died</groupId>
+            <artifactId>Excel4J</artifactId>
+            <version>3.0.0-Alpha</version>
+        </dependency>
     </dependencies>
 
     <profiles>
