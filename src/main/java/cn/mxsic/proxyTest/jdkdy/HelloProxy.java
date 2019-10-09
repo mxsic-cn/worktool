@@ -1,4 +1,4 @@
-package cn.mxsic.proxy.jdkdy;
+package cn.mxsic.proxyTest.jdkdy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  * @author: siqishangshu <br>
  * @date: 2019-02-14 11:22:00
  */
-public class HelloProxy implements InvocationHandler{
+public class HelloProxy implements InvocationHandler {
 
     private static int  cout = 0;
     private Object object;

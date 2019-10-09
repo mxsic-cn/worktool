@@ -1,6 +1,4 @@
-package cn.mxsic.proxy.cglib;
-
-import net.sf.cglib.core.DebuggingClassWriter;
+package cn.mxsic.proxyTest.cglib;
 
 /**
  * Function: Client <br>
@@ -10,7 +8,7 @@ import net.sf.cglib.core.DebuggingClassWriter;
  */
 public class Client {
     public static void main(String[] args) {
-        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "/Users/siqishangshu/temp");
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         HelloCglib helloCglib = new HelloCglib();
         Hello helloInterface = (Hello) helloCglib.getInstance(new Hello());
         helloInterface.sayHello();

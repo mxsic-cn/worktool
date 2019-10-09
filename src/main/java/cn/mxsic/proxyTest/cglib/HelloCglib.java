@@ -1,4 +1,4 @@
-package cn.mxsic.proxy.cglib;
+package cn.mxsic.proxyTest.cglib;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

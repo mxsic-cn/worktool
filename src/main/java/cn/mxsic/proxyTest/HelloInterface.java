@@ -1,4 +1,4 @@
-package cn.mxsic.proxy.jdkst;
+package cn.mxsic.proxyTest;
 
 /**
  * Function: HelloInterface <br>
@@ -8,5 +8,4 @@ package cn.mxsic.proxy.jdkst;
  */
 public interface HelloInterface {
     void sayHello();
-
 }

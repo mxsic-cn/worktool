@@ -1,7 +1,5 @@
 package cn.mxsic.charset;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Function: TODO: ADD FUNCTION <br>
  *
@@ -10,16 +8,26 @@ import java.util.concurrent.TimeUnit;
  */
 public class Chars {
     public static void main(String[] args) {
-        char a = 'A';
-        String as ="A";
-        try {
-            while (true){
-                System.out.println(as);
-                TimeUnit.SECONDS.sleep(10);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        char a = '.';
+        System.out.println(a);
+        int len = 10;
+        while (len --> 0) {
+            System.out.println(len);
         }
+        System.out.println(10 & '\uffff');
+        System.out.println('\uffff');
+
+        System.out.println(10 & 0xffff);
+//        char a = 'A';
+//        String as ="A";
+//        try {
+//            while (true){
+//                System.out.println(as);
+//                TimeUnit.SECONDS.sleep(10);
+//            }
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
 }

@@ -1,4 +1,4 @@
-package cn.mxsic.proxy.cglib;
+package cn.mxsic.proxyTest.cglib;
 
 /**
  * Function: Hello <br>
