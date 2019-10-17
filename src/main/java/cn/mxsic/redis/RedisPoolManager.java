@@ -11,7 +11,7 @@ import redis.clients.jedis.JedisPoolConfig;
  * @date: 2018-04-23 10:55:00
  */
 public class RedisPoolManager {
-    private String host = "127.0.0.1";
+    private String host = "redis";
     private int port = 6379;
 
     private JedisPool pool;

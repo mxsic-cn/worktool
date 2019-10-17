@@ -1,16 +1,16 @@
 package cn.mxsic.reflex;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Function: TODO: ADD FUNCTION <br>
  * Author: siqishangshu <br>
  * Date: 2017-10-27 20:22:00
  * Java通过实例得到实体类中的属性和方法
- *
  */
 public class ReflectTest {
 
@@ -18,64 +18,80 @@ public class ReflectTest {
             throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
 
         Student student = new Student();
+        List<Student> list = new ArrayList();
+        for (int i = 0; i < 10; i++) {
 
-        student.setBirthday(new Date());
+            student.setBirthday(new Date());
+            student.setGender(true);
+            student.setId(i);
+            student.setName("王五" + i);
+            student.setScore(99 * i);
+            list.add(student);
+            student = new Student();
+        }
+        student = list.get(list.size() - 1);
+        student.setScore(99 * 99);
         student.setGender(false);
-        student.setId(3);
-        student.setName("王五");
-        student.setScore(99);
-
-        // 通过实例得到类
-        @SuppressWarnings("rawtypes")
-        Class studentClass = (Class) student.getClass(); // studentClass
-
-        /*
-         * 得到类中的所有属性集合
-         */
-        Field[] field = studentClass.getDeclaredFields();
-
-        for (int i = 0; i < field.length; i++) {
-            Field f = field[i];
-            int size = field.length;// 属性个数
-            f.setAccessible(true); // 设置些属性是可以访问的
-
-            String type = f.getType().toString();// 得到此属性的类型
-            String key = f.getName();// key:得到属性名
-            Object value = null;// 得到此属性的值
-            value = f.get(student);
-
-            //System.out.println("属性个数:" + size + "\t 类型:" + type + "\t 属性名:" + key + "\t 属性值 : " + value);
-
-            if (key.endsWith("name")) {
-                f.set(student, "张三");// 给属性设值
-                System.out.println(student);
-            } else if (key.endsWith("id")) {
-                f.set(student, 6);
-                System.out.println(student);
-            } else if (key.endsWith("gender")) {
-                f.set(student, true);
-                System.out.println(student);
-            } else if (key.endsWith("birthday")) {
-                f.set(student, new Date());
-                System.out.println(student);
-            } else if (key.endsWith("score")) {
-                f.set(student, 44);
-                System.out.println(student);
-            }
-
+        if (list.stream().anyMatch(t -> t.isGender() == false)) {
+            System.out.println("find false one");
         }
+        Student tem = list.stream().filter(t->t.isGender() == true).findFirst().orElse(null);
+        List<Student> tems = list.stream().filter(t->t.isGender() == true).collect(Collectors.toList());
+        System.out.println(tems);
+        System.out.println(tem);
+        System.out.println(list.size());
 
-        /*
-         * 得到类中所有方法的集合
-         */
-        Method[] methods = studentClass.getMethods();
-        for (int i = 0; i < methods.length; i++) {
-            Method method = methods[i];
-            if (method.getName().startsWith("get")) {
-                System.out.print("类中的get方法:" + method.getName() + "\t");
-                System.out.println("get方法的值:" + method.invoke(student));
-            }
-        }
+//        // 通过实例得到类
+//        @SuppressWarnings("rawtypes")
+//        Class studentClass = (Class) student.getClass(); // studentClass
+//
+//        /*
+//         * 得到类中的所有属性集合
+//         */
+//        Field[] field = studentClass.getDeclaredFields();
+//
+//        for (int i = 0; i < field.length; i++) {
+//            Field f = field[i];
+//            int size = field.length;// 属性个数
+//            f.setAccessible(true); // 设置些属性是可以访问的
+//
+//            String type = f.getType().toString();// 得到此属性的类型
+//            String key = f.getName();// key:得到属性名
+//            Object value = null;// 得到此属性的值
+//            value = f.get(student);
+//
+//            //System.out.println("属性个数:" + size + "\t 类型:" + type + "\t 属性名:" + key + "\t 属性值 : " + value);
+//
+//            if (key.endsWith("name")) {
+//                f.set(student, "张三");// 给属性设值
+//                System.out.println(student);
+//            } else if (key.endsWith("id")) {
+//                f.set(student, 6);
+//                System.out.println(student);
+//            } else if (key.endsWith("gender")) {
+//                f.set(student, true);
+//                System.out.println(student);
+//            } else if (key.endsWith("birthday")) {
+//                f.set(student, new Date());
+//                System.out.println(student);
+//            } else if (key.endsWith("score")) {
+//                f.set(student, 44);
+//                System.out.println(student);
+//            }
+//
+//        }
+//
+//        /*
+//         * 得到类中所有方法的集合
+//         */
+//        Method[] methods = studentClass.getMethods();
+//        for (int i = 0; i < methods.length; i++) {
+//            Method method = methods[i];
+//            if (method.getName().startsWith("get")) {
+//                System.out.print("类中的get方法:" + method.getName() + "\t");
+//                System.out.println("get方法的值:" + method.invoke(student));
+//            }
+//        }
 
     }
 

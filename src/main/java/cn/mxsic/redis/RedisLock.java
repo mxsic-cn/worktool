@@ -1,8 +1,5 @@
 package cn.mxsic.redis;
 
-import cn.mxsic.mysql.MysqlTest;
-import redis.clients.jedis.Jedis;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -10,6 +7,9 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import cn.mxsic.mysql.MysqlTest;
+import redis.clients.jedis.Jedis;
 
 /**
  * Function: redis lock failed <br>
@@ -36,18 +36,18 @@ public class RedisLock {
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");//添加一个驱动类
-            conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/flywayDB?useUnicode=true&characterEncoding=utf-8", "root", "Rootroot1!dev");
+            conn = DriverManager.getConnection("jdbc:mysql://192.168.1.168:13306/flywayDB?useUnicode=true&characterEncoding=utf-8", "root", "Rootroot1!");
             st = conn.createStatement();
         } catch (Exception e) {
             e.printStackTrace();
         }
         ExecutorService executorService = Executors.newFixedThreadPool(50);
-        for (int i = 0; i < 2000; i++) {
+        for (int i = 0; i < 10; i++) {
             Statement finalSt = st;
             executorService.execute(new Runnable() {
                 @Override
                 public void run() {
-                    for (int j = 0; j < 600; j++) {
+                    for (int j = 0; j < 6; j++) {
                         String n = Double.toString(Math.random());
                         try {
 
@@ -71,7 +71,8 @@ public class RedisLock {
             executorService.shutdown();
         }
         try {
-            for (boolean bool = false; !bool; bool = executorService.awaitTermination(3, TimeUnit.SECONDS)) ;
+            for (boolean bool = false; !bool; bool = executorService.awaitTermination(3, TimeUnit.SECONDS))
+                ;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -84,7 +85,13 @@ public class RedisLock {
             String key = getAccountKey(id);
             while (true) {
                 Jedis jedis = redisPoolManager.getJedis();
-                if (!jedis.exists(key) && jedis.setnx(key, key) == 1) {
+                String threadId = String.valueOf(Thread.currentThread().getId());
+                if (jedis.exists(key)) {
+                    if (threadId.equals(jedis.get(key))) {
+                        return true;
+                    }
+                }
+                if (!jedis.exists(key) && jedis.setnx(key, threadId) == 1) {
                     System.out.println(name + " 加锁 成功");
                     jedis.close();
                     return true;
