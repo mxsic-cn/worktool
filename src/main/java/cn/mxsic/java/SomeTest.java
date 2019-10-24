@@ -6,7 +6,7 @@ package cn.mxsic.java;
  * @author: siqishangshu <br>
  * @date: 2019-07-24 15:22:00
  */
-public class Obj {
+public class SomeTest {
     public static void main(String[] args) {
 //        for (int i = 0; i < 26; i++) {
 //            char c = (char) (97 + i);
@@ -29,5 +29,7 @@ public class Obj {
         System.out.println(Integer.MIN_VALUE);
         byte b = 127;
         System.out.println((long) b);
+       // 二值互换，则取其一为二其计算结果，后再复算出另一值。
+
     }
 }

@@ -9,12 +9,28 @@ import java.io.*;
  */
 public class BankInfoData {
 
-    private static void readData(String fileName)  {
+    private static void readData(String filePath)  {
         try {
             int X = 0;
-            String path = BankInfoData.class.getClassLoader().getResource(fileName).getPath();
+//            String path = BankInfoData.class.getClassLoader().getResource(fileName).getPath();
             String encoding = "GBK";
-            File file = new File(path);
+//            String encoding = "UTF-8";
+//            String encoding = "ISO-8859-1";
+//            String encoding = "ISO-8859-2";
+//            String encoding = "ISO-8859-3";
+//            String encoding = "ISO-8859-4";
+//            String encoding = "ISO-8859-5";
+//            String encoding = "ISO-8859-6";
+//            String encoding = "ISO-8859-7";
+//            String encoding = "ISO-8859-8";
+//            String encoding = "ISO-8859-9";
+//            String encoding = "ISO-8859-10";
+//            String encoding = "ISO-8859-11";
+//            String encoding = "ISO-8859-13";
+//            String encoding = "ISO-8859-14";
+//            String encoding = "ISO-8859-15";
+//            String encoding = "GBK";
+            File file = new File(filePath);
             if(file.isFile() && file.exists()){
                 InputStreamReader read = new InputStreamReader(
                         new FileInputStream(file),encoding
@@ -22,18 +38,7 @@ public class BankInfoData {
                 BufferedReader bufferedReader = new BufferedReader(read);
                 String lineTxt =  null;
                 while ((lineTxt = bufferedReader.readLine()) != null ){
-                    String str = lineTxt;
-                    String string =
-                            new String(lineTxt.replace("insert into zjjz_cnaps_bankinfo (BANKNO, STATUS, BANKCLSCODE, CITYCODE, BANKNAME)",
-                                    "pay_bank_info (bankno, status, bankclscode, citycode, bankname) " ) );
-//                    if(str.contains("values")){
-//                        System.out.println(str);
-//                        System.out.println(++X);
-////                        LogUtil.writeLog( str,"new.data");
-//                    }
-                    char[] chars = str.toCharArray();
-                    for (int i= 1; i< chars.length; i++ ) {
-                    }
+                    System.out.println(lineTxt);
                 }
                 read.close();
             }
@@ -49,6 +54,6 @@ public class BankInfoData {
 
     public static void main(String[] args) {
         System.out.println("SDF");
-        BankInfoData.readData("olddata.sql");
+        BankInfoData.readData("/Users/siqishangshu/Downloads/201907_支付宝帐单/20880319448527100156_201907_业务明细_1.csv");
     }
 }
