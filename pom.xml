@@ -287,6 +287,11 @@
             <artifactId>Excel4J</artifactId>
             <version>3.0.0-Alpha</version>
         </dependency>
+        <dependency>
+            <groupId>cn.mxisc</groupId>
+            <artifactId>easyfile</artifactId>
+            <version>2.0.0-RELEASE</version>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -332,6 +337,21 @@
                             </dependency>
                         </dependencies>
                     </plugin>
+                    <!--<plugin>-->
+                        <!--<groupId>org.apache.maven.plugins</groupId>-->
+                        <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                        <!--<version>3.5.1</version>-->
+                        <!--<configuration>-->
+                            <!--<source>1.8</source>-->
+                            <!--<target>1.8</target>-->
+                            <!--<encoding>UTF-8</encoding>-->
+                            <!--<annotationProcessors>-->
+                                <!--<annotationProcessor>-->
+                                    <!--cn.mxsic.JSR269.PluggableAnnotationProcessingAPI-->
+                                <!--</annotationProcessor>-->
+                            <!--</annotationProcessors>-->
+                        <!--</configuration>-->
+                    <!--</plugin>-->
                 </plugins>
             </build>
             <activation>

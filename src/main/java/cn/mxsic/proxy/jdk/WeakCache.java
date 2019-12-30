@@ -1,4 +1,4 @@
-package cn.mxsic.proxy;
+package cn.mxsic.proxy.jdk;
 
 /*
  * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.

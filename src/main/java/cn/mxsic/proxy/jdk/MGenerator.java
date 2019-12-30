@@ -1,4 +1,4 @@
-package cn.mxsic.proxy;
+package cn.mxsic.proxy.jdk;
 
 import sun.security.action.GetBooleanAction;
 
@@ -92,7 +92,7 @@ public class MGenerator {
     private static final int opc_athrow = 191;
     private static final int opc_checkcast = 192;
     private static final int opc_wide = 196;
-    private static final String superclassName = "cn/mxsic/proxy/MProxy";
+    private static final String superclassName = "cn/mxsic/proxy/jdk/MProxy";
     //        private static final String superclassName = "java/lang/reflect/Proxy";
     private static final String handlerFieldName = "h";
     private static final boolean saveGeneratedFiles = (Boolean) AccessController.doPrivileged(new GetBooleanAction("cn.mxsic.ProxyGenerator.saveGeneratedFiles"));

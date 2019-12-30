@@ -1,9 +1,8 @@
-package cn.mxsic.proxy;
+package cn.mxsic.proxy.jdk;
 
 
 import sun.misc.VM;
 import sun.reflect.Reflection;
-import sun.reflect.misc.ReflectUtil;
 import sun.security.util.SecurityConstants;
 
 import java.io.Serializable;
@@ -12,7 +11,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
-import java.lang.reflect.ReflectPermission;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Arrays;
@@ -71,7 +69,7 @@ public class MProxy implements Serializable {
             if (VM.isSystemDomainLoader(loader) && !VM.isSystemDomainLoader(ccl)) {
                 sm.checkPermission(SecurityConstants.GET_CLASSLOADER_PERMISSION);
             }
-            ReflectUtil.checkProxyPackageAccess(ccl, interfaces);
+//            ReflectUtil.checkProxyPackageAccess(ccl, interfaces);
         }
 
     }
@@ -130,18 +128,18 @@ public class MProxy implements Serializable {
 
         SecurityManager sm = System.getSecurityManager();
         if (sm != null) {
-            if (ReflectUtil.isNonPublicProxyClass(proxyClass)) {
-                ClassLoader ccl = caller.getClassLoader();
-                ClassLoader pcl = proxyClass.getClassLoader();
-                int n = proxyClass.getName().lastIndexOf('.');
-                String pkg = (n == -1) ? "" : proxyClass.getName().substring(0, n);
-                n = caller.getName().lastIndexOf('.');
-                String callerPck = (n == -1) ? "" : caller.getName().substring(0, n);
-                if (pcl != ccl || !pkg.equals(callerPck)) {
-                    sm.checkPermission(new ReflectPermission("newProxyInPackage." + pkg));
-                }
-
-            }
+//            if (ReflectUtil.isNonPublicProxyClass(proxyClass)) {
+//                ClassLoader ccl = caller.getClassLoader();
+//                ClassLoader pcl = proxyClass.getClassLoader();
+//                int n = proxyClass.getName().lastIndexOf('.');
+//                String pkg = (n == -1) ? "" : proxyClass.getName().substring(0, n);
+//                n = caller.getName().lastIndexOf('.');
+//                String callerPck = (n == -1) ? "" : caller.getName().substring(0, n);
+//                if (pcl != ccl || !pkg.equals(callerPck)) {
+//                    sm.checkPermission(new ReflectPermission("newProxyInPackage." + pkg));
+//                }
+//
+//            }
         }
     }
 
@@ -324,9 +322,9 @@ public class MProxy implements Serializable {
         if (System.getSecurityManager() != null) {
             Class<?> nClass = n.getClass();
             Class<?> caller = Reflection.getCallerClass();
-            if (ReflectUtil.needsPackageAccessCheck(caller.getClassLoader(), nClass.getClassLoader())) {
-                ReflectUtil.checkPackageAccess(nClass);
-            }
+//            if (ReflectUtil.needsPackageAccessCheck(caller.getClassLoader(), nClass.getClassLoader())) {
+//                ReflectUtil.checkPackageAccess(nClass);
+//            }
         }
         return n;
 

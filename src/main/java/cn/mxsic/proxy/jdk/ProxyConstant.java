@@ -1,4 +1,4 @@
-package cn.mxsic.proxy;
+package cn.mxsic.proxy.jdk;
 
 /**
  * Function: ProxyConstant <br>
@@ -75,7 +75,7 @@ public class ProxyConstant {
     public static final int OPC_CHECKCAST = 192;
     public static final int OPC_WIDE = 196;
 
-    public static final String superclassName = "cn/mxsic/proxy/MProxy";
+    public static final String superclassName = "cn/mxsic/proxy/jdk/MProxy";
     //    public static final String superclassName = "java/lang/reflect/Proxy";
     public static final String handlerFieldName = "h";
     public static final boolean saveGeneratedFiles = Boolean.valueOf(System.getProperty("cn.mxsic.ProxyGenerator.saveGeneratedFiles"));

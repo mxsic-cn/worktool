@@ -1,4 +1,4 @@
-package cn.mxsic.proxy;
+package cn.mxsic.proxy.jdk;
 
 /**
  * Function: ExceptionTableEntry <br>

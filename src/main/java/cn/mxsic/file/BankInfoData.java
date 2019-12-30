@@ -14,6 +14,7 @@ public class BankInfoData {
             int X = 0;
 //            String path = BankInfoData.class.getClassLoader().getResource(fileName).getPath();
             String encoding = "GBK";
+//            String encoding = "GB2312";
 //            String encoding = "UTF-8";
 //            String encoding = "ISO-8859-1";
 //            String encoding = "ISO-8859-2";
@@ -29,7 +30,6 @@ public class BankInfoData {
 //            String encoding = "ISO-8859-13";
 //            String encoding = "ISO-8859-14";
 //            String encoding = "ISO-8859-15";
-//            String encoding = "GBK";
             File file = new File(filePath);
             if(file.isFile() && file.exists()){
                 InputStreamReader read = new InputStreamReader(
@@ -54,6 +54,7 @@ public class BankInfoData {
 
     public static void main(String[] args) {
         System.out.println("SDF");
-        BankInfoData.readData("/Users/siqishangshu/Downloads/201907_支付宝帐单/20880319448527100156_201907_业务明细_1.csv");
+//        BankInfoData.readData("/Users/siqishangshu/Downloads/201907_支付宝帐单/20880319448527100156_201907_业务明细_1.csv");
+        BankInfoData.readData("/Users/siqishangshu/Downloads/tenpay.csv");
     }
 }

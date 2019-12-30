@@ -1,11 +1,17 @@
 package cn.mxsic.java8;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Function: Conllectiono <br>
@@ -44,12 +50,97 @@ public class Collection {
         /**
          * if obj,need to convert
          */
-        Function<Pojo,Pojo> f = x ->{
+        Function<String,Pojo> f = x ->{
           Pojo pojo2 = new Pojo();
-          pojo2.setGood(x.getGood());
+          pojo2.setGood(x);
           return pojo2;
         };
-        System.out.println(f.apply(Pojo.builder().good("fsjlief").build()));
+        System.out.println(f.apply("fsjlief"));
+        if ("dsfe".equalsIgnoreCase(null)) {
+            System.out.println("null");
+        }
+    }
 
+    /**
+     * toList
+     */
+    public static void toListTest(){
+        List<PersonModel> data = getData();
+        List<String> collect = data.stream()
+                .map(PersonModel::getName)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * toSet
+     */
+    public static void toSetTest(){
+        List<PersonModel> data = getData();
+        Set<String> collect = data.stream()
+                .map(PersonModel::getName)
+                .collect(Collectors.toSet());
+    }
+
+    private static List<PersonModel> getData() {
+        return new ArrayList<>();
+    }
+
+    /**
+     * toMap
+     */
+    public static void toMapTest(){
+        List<PersonModel> data = getData();
+        Map<String, Integer> collect = data.stream()
+                .collect(
+                        Collectors.toMap(PersonModel::getName, PersonModel::getAge)
+                );
+
+        data.stream()
+                .collect(Collectors.toMap(per->per.getName(), value->{
+                    return value+"1";
+                }));
+    }
+
+    /**
+     * 指定类型
+     */
+    public static void toTreeSetTest(){
+        List<PersonModel> data = getData();
+        TreeSet<PersonModel> collect = data.stream()
+                .collect(Collectors.toCollection(TreeSet::new));
+        System.out.println(collect);
+    }
+
+    /**
+     * 分组
+     */
+    public static void toGroupTest(){
+        List<PersonModel> data = getData();
+        Map<Boolean, List<PersonModel>> collect = data.stream()
+                .collect(Collectors.groupingBy(per -> "男".equals(per.getSex())));
+        System.out.println(collect);
+    }
+
+    /**
+     * 分隔
+     */
+    public static void toJoiningTest(){
+        List<PersonModel> data = getData();
+        String collect = data.stream()
+                .map(personModel -> personModel.getName())
+                .collect(Collectors.joining(",", "{", "}"));
+        System.out.println(collect);
+    }
+
+    /**
+     * 自定义
+     */
+    public static void reduce(){
+        List<String> collect = Stream.of("1", "2", "3").collect(
+                Collectors.reducing(new ArrayList<String>(), x -> Arrays.asList(x), (y, z) -> {
+                    y.addAll(z);
+                    return y;
+                }));
+        System.out.println(collect);
     }
 }

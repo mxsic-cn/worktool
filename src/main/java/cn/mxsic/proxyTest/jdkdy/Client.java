@@ -3,7 +3,7 @@ package cn.mxsic.proxyTest.jdkdy;
 
 import java.lang.reflect.InvocationHandler;
 
-import cn.mxsic.proxy.MProxy;
+import cn.mxsic.proxy.jdk.MProxy;
 import cn.mxsic.proxyTest.Hello;
 import cn.mxsic.proxyTest.HelloInterface;
 
