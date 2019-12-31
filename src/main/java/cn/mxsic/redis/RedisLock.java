@@ -91,7 +91,8 @@ public class RedisLock {
                         return true;
                     }
                 }
-                if (!jedis.exists(key) && jedis.setnx(key, threadId) == 1) {
+                //String setex(final String key, final int seconds, final String value)
+                if (!jedis.exists(key) && jedis.setnx(key ,threadId) == 1) {
                     System.out.println(name + " 加锁 成功");
                     jedis.close();
                     return true;
