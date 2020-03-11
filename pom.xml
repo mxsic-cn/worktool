@@ -50,6 +50,11 @@
             <version>5.0.6</version>
         </dependency>
         <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.45</version>
@@ -147,7 +152,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.0</version>
+            <version>4.5.10</version>
         </dependency>
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
@@ -246,6 +251,11 @@
             <version>3.7.0</version>
         </dependency>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+        </dependency>
+        <dependency>
             <groupId>net.sourceforge.jexcelapi</groupId>
             <artifactId>jxl</artifactId>
             <version>2.6</version>
@@ -291,6 +301,11 @@
             <groupId>cn.mxisc</groupId>
             <artifactId>easyfile</artifactId>
             <version>2.0.0-RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.2.1.RELEASE</version>
         </dependency>
     </dependencies>
 
@@ -338,19 +353,19 @@
                         </dependencies>
                     </plugin>
                     <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                        <!--<version>3.5.1</version>-->
-                        <!--<configuration>-->
-                            <!--<source>1.8</source>-->
-                            <!--<target>1.8</target>-->
-                            <!--<encoding>UTF-8</encoding>-->
-                            <!--<annotationProcessors>-->
-                                <!--<annotationProcessor>-->
-                                    <!--cn.mxsic.JSR269.PluggableAnnotationProcessingAPI-->
-                                <!--</annotationProcessor>-->
-                            <!--</annotationProcessors>-->
-                        <!--</configuration>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                    <!--<version>3.5.1</version>-->
+                    <!--<configuration>-->
+                    <!--<source>1.8</source>-->
+                    <!--<target>1.8</target>-->
+                    <!--<encoding>UTF-8</encoding>-->
+                    <!--<annotationProcessors>-->
+                    <!--<annotationProcessor>-->
+                    <!--cn.mxsic.JSR269.PluggableAnnotationProcessingAPI-->
+                    <!--</annotationProcessor>-->
+                    <!--</annotationProcessors>-->
+                    <!--</configuration>-->
                     <!--</plugin>-->
                 </plugins>
             </build>

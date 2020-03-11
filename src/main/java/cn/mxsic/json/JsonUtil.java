@@ -4,8 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.type.CollectionType;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Function: JsonUtil <br>
  *
@@ -37,7 +42,7 @@ public class JsonUtil {
      * 将json结果集转化为对象
      *
      * @param jsonData json数据
-     * @param clazz    对象中的object类型
+     * @param beanType    对象中的object类型
      */
     public static <T> T jsonToPojo(String jsonData, Class<T> beanType) {
         try {
@@ -65,6 +70,65 @@ public class JsonUtil {
         }
 
         return null;
+    }
+
+    /**
+     * @param object
+     * @return
+     */
+    public static String toJSONString(Object object) {
+        return toJSONString(object, null);
+    }
+
+    /**
+     * @param object
+     * @return
+     */
+    public static String toJSONString(Object object, PropertyNamingStrategy namingStrategy) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            if (namingStrategy != null){
+                mapper.setPropertyNamingStrategy(namingStrategy);
+            }
+            String json = mapper.writeValueAsString(object);
+            return json;
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public static <T> T toObject(String jsonStr, Class<T> classType) {
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            return mapper.readValue(jsonStr, classType);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static <T> T toObjectIgnoreUnknownProperties(String jsonStr, Class<T> classType) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        try {
+            return mapper.readValue(jsonStr, classType);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static <T> List<T> toList(String str, Class<T> clazz) {
+        ObjectMapper mapper = new ObjectMapper();
+        CollectionType listType = mapper.getTypeFactory().constructCollectionType(ArrayList.class, clazz);
+        List<T> beanList = null;
+        try {
+            beanList = mapper.readValue(str, listType);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return beanList;
     }
 }
 
