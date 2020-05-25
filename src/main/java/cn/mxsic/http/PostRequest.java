@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
  
 
-public class post_request { 
+public class PostRequest {
 	
 public static final String GET_URL = "http://www.jiucool.com/request.php?key=j0r56u2"; 
 
@@ -117,69 +117,14 @@ public static void main(String[] args) {
 	 
 	List<String> list = new ArrayList<String>();
 						
-	list.add("358352062141190");
-	list.add("356997064135772");
-	list.add("351984063314926");
-	list.add("354427064539882");
-	list.add("C37NR1PHG5MV");
-	list.add("359244060647741");
-	list.add("354384069241065");
-	list.add("352045065114380");
-	list.add("C7JPD8YKG5MN");		
-	list.add("352045065308495");		
-	list.add("C36NDXX6G5MQ");		
-	list.add("F1JPG3PWG5MQ");		
-	list.add("358352062141190");	 
-	list.add("356997064135772");		
-	list.add("354377062642081");		
-	list.add("351984063314926");		
-	list.add("358359066687367");		
-	list.add("359282068455097");		
-	list.add("356958066009530");	
-	list.add("358353065846694");	 
-	list.add("358362062753605");		
-	list.add("358843055015490");		
-	list.add("356981066218737");		
-	list.add("356998061508797");		
-	list.add("359227066518271");		
-	list.add("352023069337695");		
-	list.add("356996068614527");		
-	list.add("358352063108479");//2015-7-27
-	list.add("354439065977292");
-	list.add("359227067187035");
-	list.add("356996068363463");
-	list.add("354428068222491");
-	list.add("354440067269845");
-	list.add("359260060578363");
-	list.add("359257067481831");//2015-07-30
-	list.add("355899062093402");	//2015-08-11
-	list.add("356995067324377");	
-	list.add("358359069504197");	
-	list.add("356959067341831");	
-	list.add("FK4NN530G5QT");	
-	list.add("356955066434932");	
-	list.add("354376065063436");
-	list.add("354380064111196");//2015-08-23
-	list.add("359241065682145"); 
-	list.add("359259063620511"); 
-	list.add("359259063346554"); 
-	list.add("359244060595817"); 
-	list.add("354377064511425"); 
-	list.add("358359067724318"); 
-	list.add("359252061529214"); 
-	list.add("359245067198919"); 
-	list.add("359246061408353"); 
-	list.add("359246068724737"); 
-	list.add("359248063091146"); 
-	list.add("359242063320738"); 
-	list.add("356982066990705"); 
+	list.add("356982066990705");
 	list.add("358375065303368"); 
 	list.add("359245061690754"); 
 	
 	
 	try {
 		for(int i=0;i<list.size();i++){
-			post_request.readContentFromPost(list.get(i),i);
+			PostRequest.readContentFromPost(list.get(i),i);
 			Thread.sleep(50000);
 		}
 	} catch (IOException e) {

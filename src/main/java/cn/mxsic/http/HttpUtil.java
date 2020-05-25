@@ -1,17 +1,22 @@
 package cn.mxsic.http;
 
-import cn.mxsic.util.CharSetUtil;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 import java.util.Map;
 
-public class javaHttpRequest {
+import cn.mxsic.util.CharSetUtil;
+
+public class HttpUtil {
 
     public static String sendGet(String url, String param) {
         String result = "";
@@ -61,8 +66,10 @@ public class javaHttpRequest {
             URLConnection conn = realUrl.openConnection();
             conn.setRequestProperty("accept", "*/*");
             conn.setRequestProperty("connection", "Keep-Alive");
-            conn.setRequestProperty("origin", "https://selfsolve.apple.com");
-            conn.setRequestProperty("referer", "https://selfsolve.apple.com/wcResults.do?newid=y");
+            conn.setRequestProperty("Cookie", "Hm_lvt_a02b007f29da9adf35dd0c3a17f08e73=1589766346,1589877015,1589956906,1590374392; Hm_lpvt_a02b007f29da9adf35dd0c3a17f08e73=1590375972");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+//            conn.setRequestProperty("origin", "https://selfsolve.apple.com");
+//            conn.setRequestProperty("referer", "https://selfsolve.apple.com/wcResults.do?newid=y");
             conn.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36");
             conn.setDoOutput(true);
             conn.setDoInput(true);
@@ -72,7 +79,7 @@ public class javaHttpRequest {
 
             out.flush();
             in = new BufferedReader(
-                    new InputStreamReader(conn.getInputStream()));
+                    new InputStreamReader(conn.getInputStream(),"gbk"));
             String line;
             while ((line = in.readLine()) != null) {
                 result += line;
@@ -99,7 +106,7 @@ public class javaHttpRequest {
 
 
     public static void main(String[] args) {
-        String s=javaHttpRequest.sendPost("http://cus.3zang.net:22222/api/v1/alipay/notify", "");
+        String s= HttpUtil.sendPost("http://cus.3zang.net:22222/api/v1/alipay/notify", "");
         System.out.println(s);
 //        String message = "A0012601013265                0000000213000000PA001012017122015493620171220154935000001999999                                                                                                    000000            00000000000131001                20171220154936999999                                          000000091PA00120171220154935000001326515000089773402&6217853600037518888&1232.12&3265000000001377&中国银行&RMB&20171220&充值测试&";
 //        String sr = javaHttpRequest.sendPost("http://127.0.0.1:8080/api/v1/pingan/notifyByBank", message);

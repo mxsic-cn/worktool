@@ -45,14 +45,16 @@ public class Test {
 
 //        query(aMapService,"748825c3-3d45-46fc-a668-fdbbefff561b");
 //
-//        delete(aMapService,"9e0f6fe4-ff82-444c-bc43-611efd1eb854");
+        delete(aMapService,"75d7192f-a5f0-45a9-95f5-954e409eecd6");
+        delete(aMapService,"b2363717-6923-434d-bc02-e998a249f46c");
+        delete(aMapService,"b52dbf0d-de35-4b79-8d29-24722fe31d90");
 //
 //        check(aMapService, new Coordinate(108.872834, 34.300706));
 
 //        check2(aMapService, "中国&陕西&西安市&雁塔区&锦业公寓&*");
-        Coordinate start = new Coordinate(116.345243,39.934507);
-        Coordinate end = new Coordinate(108.951444,34.297523);
-        distance(aMapService, start, end);
+//        Coordinate start = new Coordinate(116.345243,39.934507);
+//        Coordinate end = new Coordinate(108.951444,34.297523);
+//        distance(aMapService, start, end);
     }
 
     private static void distance(AMapService aMapService, Coordinate start, Coordinate end) throws Exception  {

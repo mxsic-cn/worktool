@@ -22,17 +22,17 @@ public class HttpHtml {
         OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());  
         final StringBuilder sb;   
         if (param != null) {  
-            sb = new StringBuilder(param.size() << 4);// 4�η�  
+            sb = new StringBuilder(param.size() << 4);//
             final Set<String> keys = param.keySet();  
             for (final String key : keys) {  
                 final Object value = param.get(key);  
-                sb.append(key); // ���ܰ������ַ�  
+                sb.append(key); //
                 sb.append('=');  
                 sb.append(value);  
                 sb.append('&');  
                 sb.append('\n');  
             }  
-            // ������ '&' ȥ��  
+            //
             sb.deleteCharAt(sb.length() - 1);  
         }else{  
             sb = new StringBuilder(100 << 4);  
@@ -70,73 +70,8 @@ public class HttpHtml {
 			} catch (IOException e2) {
 				e2.printStackTrace();
 			} 
-	   
-	        
 			List<String> list = new ArrayList<String>();
-								
-			list.add("358352062141190");
-			
-			list.add("356997064135772");
-			list.add("351984063314926");
-			list.add("354427064539882");
-			list.add("C37NR1PHG5MV");
-			list.add("359244060647741");
-			list.add("354384069241065");
-			list.add("352045065114380");
-		//
-
-			list.add("C7JPD8YKG5MN");		
-			list.add("352045065308495");		
-			list.add("C36NDXX6G5MQ");		
-			list.add("F1JPG3PWG5MQ");		
-			list.add("358352062141190");	
-			list.add("356997064135772");		
-			
-			list.add("354377062642081");		
-			list.add("351984063314926");		
-			list.add("358359066687367");		
-			list.add("359282068455097");		
-			list.add("356958066009530");	
-			
-			
-			list.add("358353065846694");	 
-		//
-		//
-		//
-			list.add("358362062753605");		
-			list.add("358843055015490");		
-			list.add("356981066218737");		
-			list.add("356998061508797");		
-			list.add("359227066518271");		
-			list.add("352023069337695");		
-			list.add("356996068614527");		
-			
-			
-			list.add("359251064649979");
-			
-
-			//2015-7-27
-			list.add("358352063108479");
-			list.add("354439065977292");
-			list.add("359227067187035");
-			list.add("356996068363463");
-			list.add("354428068222491");
-			list.add("354440067269845");
-			list.add("359260060578363");
-			
-//			//2015-07-30
-			list.add("359257067481831");
-			//2015-08-11
-			list.add("355899062093402");	
-			
-			list.add("356995067324377");	
-				
-			list.add("358359069504197");	
-			list.add("356959067341831");	
-			list.add("FK4NN530G5QT");	
-			list.add("356979064475515");	
-//			list.add("358353062367355");	
-			list.add("356955066434932");	
+			list.add("356955066434932");
 			list.add("354376065063436");
  		String  URL = "http://www.apple110.com/?sn="; 
 // 		String URL = "http://www.pingguo110.com/index.php/index/search.htm?sn=";
