@@ -19,6 +19,7 @@ public interface PayServiceService {
 
     /**
      * 获取所有需要查询的数据集合
+     * 并按时间排序好。
      * @return
      */
     List<QueryTask> queryTask();
