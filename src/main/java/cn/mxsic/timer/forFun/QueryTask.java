@@ -1,5 +1,6 @@
 package cn.mxsic.timer.forFun;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
@@ -11,7 +12,7 @@ import lombok.Data;
  * @date: 2020-08-25 16:16:00
  */
 @Data
-public class QueryTask {
+public class QueryTask implements Serializable{
     private String queryId;
     private Date createTime;
     private Date nextQueryTime;
