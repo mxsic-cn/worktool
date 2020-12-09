@@ -24,12 +24,18 @@ public class SomeTest {
 //            char c = (char) i;
 //            System.out.println(("" + c) + "=>" + ("" + c).hashCode());
 //        }
-        String k = new String("a");
-        System.out.println(k.hashCode());
-        System.out.println(Integer.MIN_VALUE);
-        byte b = 127;
-        System.out.println((long) b);
+//        String k = new String("a");
+//        System.out.println(k.hashCode());
+//        System.out.println(Integer.MIN_VALUE);
+//        byte b = 127;
+//        System.out.println((long) b);
        // 二值互换，则取其一为二其计算结果，后再复算出另一值。
 
+        Integer integer = new Integer(null);
+        System.out.println(add(123, integer));
+    }
+
+    private static Integer add(int i, Integer integer) {
+        return i + integer;
     }
 }
