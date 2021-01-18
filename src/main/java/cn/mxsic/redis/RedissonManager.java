@@ -4,6 +4,9 @@ import org.redisson.Redisson;
 import org.redisson.api.RAtomicLong;
 import org.redisson.api.RMap;
 import org.redisson.config.Config;
+
+import java.util.concurrent.TimeUnit;
+
 import redis.clients.jedis.Protocol;
 
 /**
@@ -14,54 +17,54 @@ import redis.clients.jedis.Protocol;
  */
 public class RedissonManager {
 
-        private static final String RAtomicName = "genId_";
-    private static final String TESTMAP = "TESTMAP";
+    private static final String RAtomicName = "genId_";
+    private static final String TESTMAP = "userMap";
 
-        private static Redisson redisson = null;
+    private static Redisson redisson = null;
 
-        public static void init(){
-            try {
-                Config config = new Config();
-                config.useSingleServer()
-                        .setAddress("redis://"
-                                +  Protocol.DEFAULT_HOST
-                                + (char) Protocol.COLON_BYTE
-                                + Protocol.DEFAULT_PORT)
-                        .setDatabase(Protocol.DEFAULT_DATABASE)
-                        .setConnectionPoolSize(100)
-                        .setConnectTimeout(Protocol.DEFAULT_TIMEOUT);
-                redisson = (Redisson) Redisson.create(config);
-                System.out.println("----------Redisson配置完成");
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+    public static void init() {
+        try {
+            Config config = new Config();
+            config.useSingleServer()
+                    .setAddress("redis://"
+                            + Protocol.DEFAULT_HOST
+                            + (char) Protocol.COLON_BYTE
+                            + Protocol.DEFAULT_PORT)
+                    .setDatabase(15)
+                    .setConnectionPoolSize(100)
+                    .setConnectTimeout(Protocol.DEFAULT_TIMEOUT);
+            redisson = (Redisson) Redisson.create(config);
+            System.out.println("----------Redisson配置完成");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-        public static Redisson getRedisson(){
-            if (redisson == null) {
-                init();
-            }
-            return redisson;
+    public static Redisson getRedisson() {
+        if (redisson == null) {
+            init();
         }
+        return redisson;
+    }
 
-        /** 获取redis中的原子ID */
-        public static Long nextID(){
-            RAtomicLong atomicLong = getRedisson().getAtomicLong(RAtomicName);
-            atomicLong.incrementAndGet();
-            return atomicLong.get();
-        }
+    /**
+     * 获取redis中的原子ID
+     */
+    public static Long nextID() {
+        RAtomicLong atomicLong = getRedisson().getAtomicLong(RAtomicName);
+        atomicLong.incrementAndGet();
+        return atomicLong.get();
+    }
 
     public static void main(String[] args) {
         RMap rMap = getRedisson().getMap(TESTMAP);
         if (rMap == null) {
             System.out.println("map is null");
         }
-        rMap.put(1,1);
-        rMap.put(2,1);
-        rMap.put(3,1);
-        rMap.put(4,1);
-
-
+        for (int i = 2691882; i < 10000000; i++) {
+            getRedisson().getLock("lock:test_" + i).lock(100, TimeUnit.HOURS);
+//            rMap.put("lock:test_" + i,i);
+        }
 
 //        RMap<String,String> rMap1 = getRedisson().getMap(TESTMAP);
 //        for (Map.Entry<String, String> entry : rMap1.entrySet()) {

@@ -26,6 +26,8 @@ public class HttpUtil {
             URL realUrl = new URL(urlNameString);
 
             URLConnection connection = realUrl.openConnection();
+
+            connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("user-agent",

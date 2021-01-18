@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.mysic.worktool</groupId>
+    <groupId>cn.mxsic.worktool</groupId>
     <artifactId>worktool-build</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
 
@@ -90,9 +90,9 @@
             <version>2.5.0</version>
         </dependency>
         <dependency>
-            <groupId>org.csource</groupId>
-            <artifactId>fastdfs-client-java</artifactId>
-            <version>1.27-SNAPSHOT</version>
+            <groupId>com.github.tobato</groupId>
+            <artifactId>fastdfs-client</artifactId>
+            <version>1.27.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
