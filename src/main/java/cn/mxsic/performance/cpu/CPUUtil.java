@@ -1,12 +1,13 @@
 package cn.mxsic.performance.cpu;
 
-import cn.mxsic.bytes.Bytes;
-import cn.mxsic.performance.entity.MonitorInfoBean;
 import com.sun.management.OperatingSystemMXBean;
 
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.lang.management.ManagementFactory;
+
+import cn.mxsic.bytes.Bytes;
+import cn.mxsic.performance.entity.MonitorInfoBean;
 
 /**
  * Created by liuchuan on 2/14/17.
@@ -29,7 +30,7 @@ public class CPUUtil {
      * @throws Exception
      * @author amg     * Creation date: 2008-4-25 - 上午10:45:08
      */
-    public MonitorInfoBean getMonitorInfoBean() throws Exception {
+    public MonitorInfoBean getMonitorInfoBean() {
         int kb = 1024;
 
         // 可使用内存
@@ -206,5 +207,21 @@ public class CPUUtil {
     public double getCpuRatioForMac() {
 
         return 0;
+    }
+
+    public static void printCpu()  {
+        CPUUtil service = new CPUUtil();
+        MonitorInfoBean monitorInfo = service.getMonitorInfoBean();
+        System.out.println("cpu占有率=" + monitorInfo.getCpuRatio());
+
+//        System.out.println("可使用内存=" + monitorInfo.getTotalMemory()/ 1024L + "MB");
+//        System.out.println("剩余内存=" + monitorInfo.getFreeMemory()/ 1024L + "MB");
+//        System.out.println("最大可使用内存=" + monitorInfo.getMaxMemory()/ 1024L + "MB");
+
+        System.out.println("操作系统=" + monitorInfo.getOsName());
+//        System.out.println("总的物理内存=" + monitorInfo.getTotalMemorySize()  / 1024L + "MB");
+        System.out.println("剩余的物理内存=" + monitorInfo.getFreeMemory()  / 1024L + "MB");
+        System.out.println("已使用的物理内存=" + monitorInfo.getUsedMemory() / 1024L + "MB");
+        System.out.println("线程总数=" + monitorInfo.getTotalThread());
     }
 }

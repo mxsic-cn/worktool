@@ -36,6 +36,7 @@
         <encoding>UTF-8</encoding>
         <scala.tools.version>2.10</scala.tools.version>
         <scala.version>2.10.4</scala.version>
+        <seata.version>1.4.1</seata.version>
     </properties>
     <dependencies>
         <dependency>
@@ -317,7 +318,11 @@
             <artifactId>spring-test</artifactId>
             <version>4.3.13.RELEASE</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-all</artifactId>
+            <version>${seata.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>

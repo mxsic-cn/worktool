@@ -22,26 +22,30 @@ public class PassValue {
 
 
     public static void main(String[] args) {
+        String newCode = "xian_shanghai_p_21_02_23";
+        if (newCode.length()>20) {
+            newCode = newCode.substring(newCode.length()-20,newCode.length());
+        }
+        System.out.println(newCode);
 
-
-        System.out.print("minibus_small:");
-        System.out.println("minibus_small".hashCode());
-        System.out.print("minibus_big:");
-        System.out.println("minibus_big".hashCode());
-        System.out.print("flat_small:");
-        System.out.println("flat_small".hashCode());
-        System.out.print("van_big:");
-        System.out.println("van_big".hashCode());
-        System.out.print("flag_large:");
-        System.out.println("flag_large".hashCode());
-        System.out.print("flag_big_5:");
-        System.out.println("flag_big_5".hashCode());
-        System.out.print("flag_big_6:");
-        System.out.println("flag_big_6".hashCode());
-        System.out.print("flag_big_7:");
-        System.out.println("flag_big_7".hashCode());
-        System.out.print("flag_big_9:");
-        System.out.println("flag_big_9".hashCode());
+//        System.out.print("minibus_small:");
+//        System.out.println("minibus_small".hashCode());
+//        System.out.print("minibus_big:");
+//        System.out.println("minibus_big".hashCode());
+//        System.out.print("flat_small:");
+//        System.out.println("flat_small".hashCode());
+//        System.out.print("van_big:");
+//        System.out.println("van_big".hashCode());
+//        System.out.print("flag_large:");
+//        System.out.println("flag_large".hashCode());
+//        System.out.print("flag_big_5:");
+//        System.out.println("flag_big_5".hashCode());
+//        System.out.print("flag_big_6:");
+//        System.out.println("flag_big_6".hashCode());
+//        System.out.print("flag_big_7:");
+//        System.out.println("flag_big_7".hashCode());
+//        System.out.print("flag_big_9:");
+//        System.out.println("flag_big_9".hashCode());
 //        String url = "/api/v1/wechat/16546465434/be5cfd4bc4cc38fc4a1d221957730";
 //        String[] arr = url.split(URL_SPILT);
 //        for (String s : arr) {
