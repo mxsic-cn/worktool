@@ -39,6 +39,7 @@ public class DownloadUtil {
 //                fileInputStream.read(bytes);
 
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
+
                 byte[] buffer = new byte[2048];
                 int readSize;
                 while ((readSize = inputStream.read(buffer)) >= 0) out.write(buffer, 0, readSize);

@@ -3,7 +3,6 @@ package cn.mxsic.redis.lua;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.redisson.api.RLock;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.SimpleDateFormat;
@@ -89,20 +88,20 @@ public class TestRedisLock {
     /**
      * redisson 分布式锁测试
      */
-    public void func1(){
-        RLock rLock = RedisLock.redissonGetLock(lockKey);
-        try{
-            //加锁
-            rLock.lock();
-            System.out.println(Thread.currentThread().getName() + "获取锁成功，执行业务");
-            Thread.sleep(1000);
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            //释放锁
-            RedisLock.redissonUnLock(rLock);
-            System.out.println(Thread.currentThread().getName() + "业务执行完，释放锁");
-        }
-    }
+//    public void func1(){
+//        RLock rLock = RedisLock.redissonGetLock(lockKey);
+//        try{
+//            //加锁
+//            rLock.lock();
+//            System.out.println(Thread.currentThread().getName() + "获取锁成功，执行业务");
+//            Thread.sleep(1000);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }finally {
+//            //释放锁
+//            RedisLock.redissonUnLock(rLock);
+//            System.out.println(Thread.currentThread().getName() + "业务执行完，释放锁");
+//        }
+//    }
 }
 
